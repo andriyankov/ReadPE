@@ -1,0 +1,358 @@
+{
+	"Dos-Header": {
+		"e_cblp": "0x90", 
+		"e_cp": "0x3", 
+		"e_cparhdr": "0x4", 
+		"e_crlc": "0x0", 
+		"e_cs": "0x0", 
+		"e_csum": "0x0", 
+		"e_ip": "0x0", 
+		"e_lfanew": "0x80", 
+		"e_lfarlc": "0x40", 
+		"e_magic": "0x5A4D", 
+		"e_maxalloc": "0xFFFF", 
+		"e_minalloc": "0x0", 
+		"e_oemid": "0x0", 
+		"e_oeminfo": "0x0", 
+		"e_ovno": "0x0", 
+		"e_res": [
+			"0x0", 
+			"0x0", 
+			"0x0", 
+			"0x0"
+		], 
+		"e_res2": [
+			"0x0", 
+			"0x0", 
+			"0x0", 
+			"0x0", 
+			"0x0", 
+			"0x0", 
+			"0x0", 
+			"0x0", 
+			"0x0", 
+			"0x0"
+		], 
+		"e_sp": "0xB8", 
+		"e_ss": "0x0"
+	}, 
+	"NT-Headers": {
+		"FileHeader": {
+			"Characteristics": "0x30F", 
+			"Machine": "0x14C", 
+			"NumberOfSections": "4", 
+			"NumberOfSymbols": "0", 
+			"PointerToSymbolTable": "0x0", 
+			"SizeOfOptionalHeader": "0xE0", 
+			"TimeDateStamp": "0x4E16FE06"
+		}, 
+		"OptionalHeader": {
+			"AddressOfEntryPoint": "0x1080", 
+			"BaseOfCode": "0x1000", 
+			"CheckSum": "0x10887", 
+			"DataDirectory": [
+				{
+					"Size": "0x0", 
+					"VirtualAddress": "0x0"
+				}, 
+				{
+					"Size": "0x3C", 
+					"VirtualAddress": "0x205C"
+				}, 
+				{
+					"Size": "0x12A0", 
+					"VirtualAddress": "0x4000"
+				}, 
+				{
+					"Size": "0x0", 
+					"VirtualAddress": "0x0"
+				}, 
+				{
+					"Size": "0x0", 
+					"VirtualAddress": "0x0"
+				}, 
+				{
+					"Size": "0x0", 
+					"VirtualAddress": "0x0"
+				}, 
+				{
+					"Size": "0x0", 
+					"VirtualAddress": "0x0"
+				}, 
+				{
+					"Size": "0x0", 
+					"VirtualAddress": "0x0"
+				}, 
+				{
+					"Size": "0x0", 
+					"VirtualAddress": "0x0"
+				}, 
+				{
+					"Size": "0x0", 
+					"VirtualAddress": "0x0"
+				}, 
+				{
+					"Size": "0x0", 
+					"VirtualAddress": "0x0"
+				}, 
+				{
+					"Size": "0x0", 
+					"VirtualAddress": "0x0"
+				}, 
+				{
+					"Size": "0x4C", 
+					"VirtualAddress": "0x2000"
+				}, 
+				{
+					"Size": "0x0", 
+					"VirtualAddress": "0x0"
+				}, 
+				{
+					"Size": "0x0", 
+					"VirtualAddress": "0x0"
+				}, 
+				{
+					"Size": "0x0", 
+					"VirtualAddress": "0x0"
+				}
+			], 
+			"DllCharacteristics": "0x0", 
+			"FileAlignment": "0x1000", 
+			"ImageBase": "0x400000", 
+			"LoaderFlags": "0x0", 
+			"Magic": "0x10B", 
+			"MajorImageVersion": "0", 
+			"MajorLinkerVersion": "2", 
+			"MajorOperatingSystemVersion": "4", 
+			"MajorSubsystemVersion": "4", 
+			"MinorImageVersion": "0", 
+			"MinorLinkerVersion": "56", 
+			"MinorOperatingSystemVersion": "0", 
+			"MinorSubsystemVersion": "0", 
+			"NumberOfRvaAndSizes": "16", 
+			"SectionAlignment": "0x1000", 
+			"SizeOfCode": "0x1000", 
+			"SizeOfHeaders": "0x400", 
+			"SizeOfHeapCommit": "0x1000", 
+			"SizeOfHeapReserve": "0x100000", 
+			"SizeOfImage": "0x6000", 
+			"SizeOfInitializedData": "0x4000", 
+			"SizeOfStackCommit": "0x1000", 
+			"SizeOfStackReserve": "0x100000", 
+			"SizeOfUninitializedData": "0x0", 
+			"Subsystem": "0x3", 
+			"Win32VersionValue": "0"
+		}, 
+		"Signature": "0x4550"
+	}, 
+	"import-directories-details": [
+		{
+			"elements": [
+				{
+					"hint": "0x1F8", 
+					"name": "Tcl_Init", 
+					"offset": "0x63C", 
+					"rva": "0x203C"
+				}, 
+				{
+					"hint": "0x2A7", 
+					"name": "Tcl_SetVar", 
+					"offset": "0x640", 
+					"rva": "0x2040"
+				}, 
+				{
+					"hint": "0x223", 
+					"name": "Tcl_Main", 
+					"offset": "0x644", 
+					"rva": "0x2044"
+				}
+			], 
+			"name": "tcl85.dll"
+		}, 
+		{
+			"elements": [
+				{
+					"hint": "0x10F", 
+					"name": "_initterm", 
+					"offset": "0x600", 
+					"rva": "0x2000"
+				}, 
+				{
+					"hint": "0xB7", 
+					"name": "_controlfp", 
+					"offset": "0x604", 
+					"rva": "0x2004"
+				}, 
+				{
+					"hint": "0x2AD", 
+					"name": "setlocale", 
+					"offset": "0x608", 
+					"rva": "0x2008"
+				}, 
+				{
+					"hint": "0xD3", 
+					"name": "_exit", 
+					"offset": "0x60C", 
+					"rva": "0x200C"
+				}, 
+				{
+					"hint": "0x48", 
+					"name": "_XcptFilter", 
+					"offset": "0x610", 
+					"rva": "0x2010"
+				}, 
+				{
+					"hint": "0x249", 
+					"name": "exit", 
+					"offset": "0x614", 
+					"rva": "0x2014"
+				}, 
+				{
+					"hint": "0x64", 
+					"name": "__p___initenv", 
+					"offset": "0x618", 
+					"rva": "0x2018"
+				}, 
+				{
+					"hint": "0x58", 
+					"name": "__getmainargs", 
+					"offset": "0x61C", 
+					"rva": "0x201C"
+				}, 
+				{
+					"hint": "0x83", 
+					"name": "__setusermatherr", 
+					"offset": "0x620", 
+					"rva": "0x2020"
+				}, 
+				{
+					"hint": "0x9D", 
+					"name": "_adjust_fdiv", 
+					"offset": "0x624", 
+					"rva": "0x2024"
+				}, 
+				{
+					"hint": "0x6A", 
+					"name": "__p__commode", 
+					"offset": "0x628", 
+					"rva": "0x2028"
+				}, 
+				{
+					"hint": "0x6F", 
+					"name": "__p__fmode", 
+					"offset": "0x62C", 
+					"rva": "0x202C"
+				}, 
+				{
+					"hint": "0x81", 
+					"name": "__set_app_type", 
+					"offset": "0x630", 
+					"rva": "0x2030"
+				}, 
+				{
+					"hint": "0xCA", 
+					"name": "_except_handler3", 
+					"offset": "0x634", 
+					"rva": "0x2034"
+				}
+			], 
+			"name": "MSVCRT.dll"
+		}
+	], 
+	"import-directory-headers": [
+		{
+			"FirstThunk": "0x203C", 
+			"ForwarderChain": "0x0", 
+			"Name": "0x210A", 
+			"OriginalFirstThunk": "0x20D4", 
+			"TimeDateStamp": "0x0"
+		}, 
+		{
+			"FirstThunk": "0x2000", 
+			"ForwarderChain": "0x0", 
+			"Name": "0x2120", 
+			"OriginalFirstThunk": "0x2098", 
+			"TimeDateStamp": "0x0"
+		}
+	], 
+	"nt-sections": [
+		{
+			"Characteristics": "0x60300020", 
+			"Name": ".text", 
+			"NumberOfLinenumbers": "0", 
+			"NumberOfRelocations": "0", 
+			"PointerToLinenumbers": "0x0", 
+			"PointerToRawData": "0x400", 
+			"PointerToRelocations": "0x0", 
+			"SizeOfRawData": "0x200", 
+			"VirtualAddress": "0x1000", 
+			"VirtualSize": "0x1CC"
+		}, 
+		{
+			"Characteristics": "0x40300040", 
+			"Name": ".rdata", 
+			"NumberOfLinenumbers": "0", 
+			"NumberOfRelocations": "0", 
+			"PointerToLinenumbers": "0x0", 
+			"PointerToRawData": "0x600", 
+			"PointerToRelocations": "0x0", 
+			"SizeOfRawData": "0x200", 
+			"VirtualAddress": "0x2000", 
+			"VirtualSize": "0x1EC"
+		}, 
+		{
+			"Characteristics": "0xC0300040", 
+			"Name": ".data", 
+			"NumberOfLinenumbers": "0", 
+			"NumberOfRelocations": "0", 
+			"PointerToLinenumbers": "0x0", 
+			"PointerToRawData": "0x800", 
+			"PointerToRelocations": "0x0", 
+			"SizeOfRawData": "0x200", 
+			"VirtualAddress": "0x3000", 
+			"VirtualSize": "0x5C"
+		}, 
+		{
+			"Characteristics": "0xC0300040", 
+			"Name": ".rsrc", 
+			"NumberOfLinenumbers": "0", 
+			"NumberOfRelocations": "0", 
+			"PointerToLinenumbers": "0x0", 
+			"PointerToRawData": "0xA00", 
+			"PointerToRelocations": "0x0", 
+			"SizeOfRawData": "0x1400", 
+			"VirtualAddress": "0x4000", 
+			"VirtualSize": "0x12A0"
+		}
+	], 
+	"nt-sections-details": [
+		{
+			"Characteristics": "code,align,align 1 bytes,executable,readable", 
+			"Name": ".text", 
+			"entropy": "3.710", 
+			"real-file-offset": "0x400", 
+			"real-size": "0x1000"
+		}, 
+		{
+			"Characteristics": "initialized,align,align 1 bytes,readable", 
+			"Name": ".rdata", 
+			"entropy": "3.471", 
+			"real-file-offset": "0x600", 
+			"real-size": "0x1000"
+		}, 
+		{
+			"Characteristics": "initialized,align,align 1 bytes,readable,writeable", 
+			"Name": ".data", 
+			"entropy": "3.287", 
+			"real-file-offset": "0x800", 
+			"real-size": "0x1000"
+		}, 
+		{
+			"Characteristics": "initialized,align,align 1 bytes,readable,writeable", 
+			"Name": ".rsrc", 
+			"entropy": "0.000", 
+			"real-file-offset": "0xA00", 
+			"real-size": "0x2000"
+		}
+	]
+}

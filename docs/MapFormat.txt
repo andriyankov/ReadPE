@@ -1,0 +1,103 @@
+ÃÂÚÓ‰ ÓÔËÒ‡Ì ‚ ÍÌË„Â Debugging Applications by John Robbins
+MAP File Contents
+Listing 8-1 shows an example MAP file. The top part of the MAP file
+contains the module name, the timestamp indicating when LINK.EXE
+linked the module, and the preferred load address. After the header
+comes the section information that shows which sections the linker
+brought in from the various OBJ and LIB files.
+
+After the section information, you get to the good stuff, the public
+function information. Notice the "public" part. If you have
+static-declared C functions, they won't show up in the MAP file.
+Fortunately, the line numbers will still reflect the static functions.
+
+The important parts of the public function information are the
+function names and the information in the Rva+Base column, which is
+the starting address of the function. The line information follows the
+public function section. The lines are shown as follows:
+
+10 0001:00000030
+
+
+
+The first number is the line number, and the second is the offset from
+the beginning of the code section in which this line occurred. Yes,
+that sounds confusing, but later I'll show you the calculation you
+need to convert an address into a source file and line number.
+
+If the module contains exported functions, the final section of a MAP
+file lists the exports. You can get this same information by running
+"DUMPBIN /EXPORTS <modulename>."
+
+
+Finding the Function, Source File, and Line Number
+
+
+The algorithm for extracting the function, source file, and line
+number from a MAP file is straightforward, but you need to do a few
+hexadecimal calculations when using it. As an example, let's say that
+a crash in MAPDLL.DLL, the module shown in Listing 8-1, occurs at
+address 0x03901099.
+
+The first step is to look in your project's MAP files for the file
+that contains the crash address. First look at the preferred load
+address and the last address in the public function section. If the
+crash address is between those values, you're looking at the correct
+MAP file.
+
+To find the functionóor the closest public function if the crash
+occurred in a C static functionóscan down the Rva+Base column until
+you find the first function address that's greater than the crash
+address. The preceding entry in the MAP file is the function that had
+the crash. For example, in Listing 8-1, the first function address
+greater than the 0x3901099 crash address is 0x39010F6, so the function
+that crashed is "?MapDLLHappyFunc@@YAPADPAD@Z." Any function name that
+starts with a question mark is a C++ decorated name. To translate the
+name, pass it as a command-line parameter to the Platform SDK program
+UNDNAME.EXE. In the example, "?MapDLLHappyFunc@@YAPADPAD@Z" translates
+into MapDLLHappyFunc, which you probably could figure out just by
+looking at the decorated name. Other C++ decorated names are harder to
+decipher, especially when overloaded functions are used. To find the
+line number, you get to do a little hexadecimal subtraction using the
+following formula:
+
+(crash address) _ (preferred load address) _ 0x1000
+
+
+
+Remember that the addresses are offsets from the beginning of the
+first code section, so the formula does that conversion. You can
+probably guess why you subtract the preferred load address, but you
+earn extra credit if you know why you still have to subtract 0x1000.
+The crash address is an offset from the beginning of the code section,
+but the code section isn't the first part of the binary. The first
+part of the binary is the PE (Portable Executable) header, which is
+0x1000 bytes long.
+
+I'm not sure why the linker still generates MAP files that require
+this odd calculation. The linker team put in the Rva+Base column a
+while ago, so I don't see why they didn't just fix up the line number
+at the same time.
+
+Once you've calculated the offset, look through the MAP file line
+information until you find the closest number that isn't over the
+calculated value. Keep in mind that during the generation phase the
+compiler can jiggle the code around so that the source lines aren't in
+ascending order. With my crash example, I used the following formula:
+
+0x03901099 _ 0x03900000 _ 0x1000 = 0x99
+
+
+
+If you look through the MAP file in Listing 8-1, you'll see that the
+closest line that isn't over is 38 0001:00000096 (Line 38) in
+MAPDLL.CPP.
+
+If you're reading a MAP file for a module written in Visual Basic, you
+need to be aware that the line numbers reported in the MAP file (and
+in CrashFinder as well) don't correspond to the lines that you see in
+the Visual Basic editor. The compiled binaries take into account the
+complete header at the top of the source file, which Visual Basic
+hides from view. To find the line that the compiler reports, you need
+to open the Visual Basic file in a text editor, such as the Visual C++
+editor, and go to the line listed in the MAP file.

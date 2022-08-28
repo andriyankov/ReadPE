@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="etc">
+      <UniqueIdentifier>{461aa00a-d9dc-4756-b031-ad3edef994b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third-party">
+      <UniqueIdentifier>{c1dffd60-450a-4a0f-b108-6373d49088ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\readpe\Errors.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\readpe\PeDumper.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\third-party\cajun\cajun.hpp">
+      <Filter>third-party</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\readpe\cmdline.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\readpe\FormatOptions.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\readpe\ProgramOptions.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\readpe\OutputFormatter.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\std.hpp">
+      <Filter>etc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\readpe\Exceptions.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\readpe.hpp">
+      <Filter>etc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\std.cpp">
+      <Filter>etc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\appmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cmdline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\OutputFormatter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\PeDumper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

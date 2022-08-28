@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\build\Framework.vcxproj">
+      <Project>{e3bce4a6-6f66-4219-aa17-4c42d3715ab1}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\Aligner.cpp" />
+    <ClCompile Include="..\src\Detect.cpp" />
+    <ClCompile Include="..\src\HeadersUtils.cpp" />
+    <ClCompile Include="..\src\Image.cpp" />
+    <ClCompile Include="..\src\std.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\src\parse\Bound.cpp" />
+    <ClCompile Include="..\src\parse\Export.cpp" />
+    <ClCompile Include="..\src\parse\Import.cpp" />
+    <ClCompile Include="..\src\parse\Relocation.cpp" />
+    <ClCompile Include="..\src\parse\Section.cpp" />
+    <ClCompile Include="..\src\parse\Tls.cpp" />
+    <ClCompile Include="..\src\Utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\pe.hpp" />
+    <ClInclude Include="..\include\pe\Aligner.hpp" />
+    <ClInclude Include="..\include\pe\parse\Bound.hpp" />
+    <ClInclude Include="..\include\pe\parse\Export.hpp" />
+    <ClInclude Include="..\include\pe\Const.hpp" />
+    <ClInclude Include="..\include\pe\Detect.hpp" />
+    <ClInclude Include="..\include\pe\Exceptions.hpp" />
+    <ClInclude Include="..\include\pe\HeadersUtils.hpp" />
+    <ClInclude Include="..\include\pe\Image.hpp" />
+    <ClInclude Include="..\include\pe\HeadersTraits.hpp" />
+    <ClInclude Include="..\include\pe\parse\Import.hpp" />
+    <ClInclude Include="..\include\pe\parse\Relocation.hpp" />
+    <ClInclude Include="..\include\pe\parse\Section.hpp" />
+    <ClInclude Include="..\include\pe\Struct.hpp" />
+    <ClInclude Include="..\include\pe\parse\Tls.hpp" />
+    <ClInclude Include="..\include\pe\Utils.hpp" />
+    <ClInclude Include="..\src\ImageImpl.hpp" />
+    <ClInclude Include="..\src\std.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\ImageImpl.impl" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B43CA9D0-A99A-4206-BAD8-9DAFD280EB15}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>PE</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120_xp</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120_xp</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\..\build\bin\$(ProjectName)\$(PlatformName)-$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IntDir>$(SolutionDir)\..\build\obj\$(ProjectName)\$(PlatformName)-$(Configuration)\</IntDir>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\..\build\bin\$(ProjectName)\$(PlatformName)-$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IntDir>$(SolutionDir)\..\build\obj\$(ProjectName)\$(PlatformName)-$(Configuration)\</IntDir>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)\..\build\bin\$(ProjectName)\$(PlatformName)-$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IntDir>$(SolutionDir)\..\build\obj\$(ProjectName)\$(PlatformName)-$(Configuration)\</IntDir>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)\..\build\bin\$(ProjectName)\$(PlatformName)-$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IntDir>$(SolutionDir)\..\build\obj\$(ProjectName)\$(PlatformName)-$(Configuration)\</IntDir>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)/../../Framework/include/;$(ProjectDir)/../../pe/include/</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>std.hpp</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)/../../Framework/include/;$(ProjectDir)/../../pe/include/</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>std.hpp</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)/../../Framework/include/;$(ProjectDir)/../../pe/include/</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>std.hpp</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)/../../Framework/include/;$(ProjectDir)/../../pe/include/</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>std.hpp</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

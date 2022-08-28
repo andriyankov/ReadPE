@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="etc">
+      <UniqueIdentifier>{3e81e756-5ee0-4a61-8203-ba1bbaf78782}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\parse">
+      <UniqueIdentifier>{6fdbb258-daab-4576-b361-520d5cb4b27a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\parse">
+      <UniqueIdentifier>{121db084-5b5a-4a3c-aa57-c9072075574c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\std.cpp">
+      <Filter>etc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\parse\Bound.cpp">
+      <Filter>Source Files\parse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\parse\Export.cpp">
+      <Filter>Source Files\parse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\parse\Import.cpp">
+      <Filter>Source Files\parse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\parse\Relocation.cpp">
+      <Filter>Source Files\parse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\parse\Section.cpp">
+      <Filter>Source Files\parse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\parse\Tls.cpp">
+      <Filter>Source Files\parse</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Aligner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Detect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\HeadersUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\std.hpp">
+      <Filter>etc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pe\Const.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pe\Detect.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pe\Exceptions.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pe\Image.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pe\Struct.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pe\Utils.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pe\HeadersTraits.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pe\Aligner.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pe\HeadersUtils.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pe\parse\Section.hpp">
+      <Filter>include\parse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pe\parse\Import.hpp">
+      <Filter>include\parse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pe\parse\Bound.hpp">
+      <Filter>include\parse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pe\parse\Export.hpp">
+      <Filter>include\parse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pe\parse\Relocation.hpp">
+      <Filter>include\parse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pe\parse\Tls.hpp">
+      <Filter>include\parse</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pe.hpp">
+      <Filter>etc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ImageImpl.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\ImageImpl.impl">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

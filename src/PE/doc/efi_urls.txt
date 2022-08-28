@@ -1,0 +1,11 @@
+
+Intel® Platform Innovation Framework for UEFI Specification
+URL: http://www.intel.com/content/www/us/en/architecture-and-technology/unified-extensible-firmware-interface/efi-specifications-general-technology.html
+
+Specification Version 1.10
+URL: 
+http://download.intel.com/technology/efi/docs/EFI_110.zip
+
+Specification 1.10 Update -001. EFI Specification 1.10 update -001 contains clarifications and corrections that were submitted and accepted between 1/7/2003 and 11/1/2003, after the formal EFI Specification 1.10 was released.
+URL:
+http://download.intel.com/technology/efi/docs/EFI_1-10_Update.zip

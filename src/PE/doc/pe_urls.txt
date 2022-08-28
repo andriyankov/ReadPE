@@ -1,0 +1,12 @@
+
+1)
+От зеленого к красному: Глава 2: Формат исполняемого файла ОС Windows. PE32 и PE64. Способы заражения исполняемых файлов.
+http://wasm.ru/print.php?article=green2red02#_Toc100906491
+
+2)
+Исследование формата Portable Executable, сопровождающееся написанием PE-загрузчика
+http://rsdn.ru/article/baseserv/peloader.xml#EVH
+
+3)
+Об упаковщиках в последний раз: Часть первая - теоретическая
+http://wasm.ru/print.php?article=packlast01

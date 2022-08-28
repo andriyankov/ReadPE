@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?taskcoach release="1.3.28" tskversion="37"?>
+
+<tasks>
+<task actualstartdate="2012-11-21 17:04:51.242000" id="091048a1-33dc-11e2-afdf-005056c00008" plannedstartdate="2012-11-21 17:04:51.242000" status="1" subject="NonSmoker: Результаты выполнения на основе отчетов выполнения по файлам после PlanRunner">
+<description>
+1) Нужно при выполнении плана складывать результаты выполнения в файлы 2) которые при сравнивании с эталонами складывать в файлы отчетов о сравнении 3) А в конце цикла сравнения всех планов прочитать эти журналы сравнения и сформировать общий отчет о тестировании
+
+</description>
+</task>
+<task actualstartdate="2012-11-11 00:05:55.715000" expandedContexts="('taskviewer',)" id="0951d440-2b72-11e2-af58-005056c00008" plannedstartdate="2012-11-11 00:05:55.715000" priority="2" status="1" subject="Настроить автосборку моих проектов и библиотек">
+<task actualstartdate="2012-11-11 00:06:28.786000" id="1d07e921-2b72-11e2-9fd2-005056c00008" plannedstartdate="2012-11-11 00:06:28.786000" status="1" subject="Посмотреть на CMake и Gyp выбрать" />
+<task actualstartdate="2012-11-21 17:02:43.055000" id="bca87ff0-33db-11e2-9046-005056c00008" plannedstartdate="2012-11-21 17:02:43.055000" status="1" subject="Посмотреть сборку Kayp проекта на предмет msvcrt.dll">
+<description>
+Того самого проекта из ЗАО "АСТ", на предмет вынесения CRT-кода в общую для всех виндов msvcrt. Как это сделал Вася с помощью WinDDK
+</description>
+</task>
+</task>
+<task actualstartdate="2013-02-09 12:45:27.327000" id="0d4b52ee-7295-11e2-8006-005056c00008" plannedstartdate="2013-02-09 12:45:27.327000" status="1" subject="Упростить код RvaToRaw\RawToRva" />
+<task id="10c2b140-f40a-11e0-b55d-005056c00008" plannedstartdate="2011-10-11 17:08:00" priority="4" status="1" subject="Добавить PeUtils::appendNtSection() метод" />
+<task actualstartdate="2012-11-08 23:47:03.586000" completiondate="2013-01-26 21:26:17.744000" id="11b1001e-29dd-11e2-a073-005056c00008" percentageComplete="100" plannedstartdate="2012-11-08 23:47:03.585000" priority="5" status="1" subject="Пересмотреть иерархию типов исключений">
+<description>
+Возможно мой Fw::Exception надо будет унаследовать от std::exception, а уж от него ReadpeException, PeException, FrameworkExceptions, etc
+</description>
+</task>
+<task completiondate="2011-10-16 12:30:52.412000" id="122dc58f-f7d1-11e0-a89d-005056c00008" percentageComplete="100" plannedstartdate="2011-10-16 12:30:00" status="1" subject="copyData PeUtils.cpp во Framework" />
+<task id="141715cf-fa80-11e0-8fe0-005056c00008" plannedstartdate="2011-10-19 22:28:00" priority="4" status="1" subject="Автоматизировать документацию на основе исходного кода">
+<description>
+Найти подходящую Doxygen-like систему, только мульти-платформенную
+</description>
+</task>
+<task actualstartdate="2012-12-13 12:35:46.153000" id="16edb591-4500-11e2-aa3c-005056c00008" plannedstartdate="2012-12-13 12:35:46.153000" status="1" subject="Ошибка конфигурации, если подать в ReadPE опцию '--nologo' два раза">
+<description>
+Надо чтобы при больше 1 раза считалось, как будто 1 раз подали
+</description>
+</task>
+<task actualstartdate="2013-03-01 10:57:45.860000" creationDateTime="2013-03-01 10:56:12.076000" id="1a5266c0-823d-11e2-a32f-e89a8f965467" modificationDateTime="2013-03-19 01:05:41.698000" priority="8" status="1" subject="Скрипт создающий новый solution">
+<description>
+Сделать 2 солюшена, понять различия меж ними и написать скрипт
+</description>
+</task>
+<task expandedContexts="('taskviewer',)" id="2607f19e-f40a-11e0-9889-005056c00008" plannedstartdate="2011-10-11 17:08:00" priority="3" status="1" subject="Тестирование добавления новой секции">
+<task id="4d97d000-f40a-11e0-843d-005056c00008" plannedstartdate="2011-10-11 17:09:00" status="1" subject="Подобрать 32-битный входной файл" />
+<task expandedContexts="('taskviewer',)" id="55661a80-f40a-11e0-9229-005056c00008" plannedstartdate="2011-10-11 17:10:00" status="1" subject="Подобрать 64-битный входной файл" />
+</task>
+<task id="264c8e40-f366-11e0-aea1-005056c00008" plannedstartdate="2011-10-10 21:34:00" status="1" subject="Подумать над введением лицензирования на основе проверки серийного номера" />
+<task id="2f480e1e-f366-11e0-b853-005056c00008" plannedstartdate="2011-10-10 21:35:00" status="1" subject="Подумать над получением анти-эмуляторных рекорд по IP, e-mail и др. источников" />
+<task actualstartdate="2012-11-21 16:59:01.850000" id="38cf72b0-33db-11e2-9a60-005056c00008" plannedstartdate="2012-11-21 16:59:01.850000" status="1" subject="Циклы: for, while на предмет излишней вложенности" />
+<task actualstartdate="2013-03-19 01:03:11.084000" creationDateTime="2013-02-22 09:46:41.092000" id="3b548040-7cb3-11e2-8e55-e89a8f965467" modificationDateTime="2013-03-19 01:06:53.492000" priority="8" status="1" subject="Переписать тест-кейсы применяя названия функций given-when-then" />
+<task completiondate="2012-04-01 18:28:45.912000" expandedContexts="('taskviewer',)" id="3ea52f40-77e3-11e1-9642-005056c00008" percentageComplete="100" plannedstartdate="2012-03-27 12:02:06.983000" status="1" subject="JSON конфиг">
+<task completiondate="2012-04-01 18:28:45.912000" id="25981170-77e3-11e1-9f3f-005056c00008" percentageComplete="100" plannedstartdate="2012-03-27 12:02:06.983000" status="1" subject="Обязательная  опция &quot;version&quot; в JSON конфиг файле" />
+</task>
+<task completiondate="2011-10-20 01:36:05.374000" id="4274e5ae-fa80-11e0-bf37-005056c00008" percentageComplete="100" plannedstartdate="2011-10-19 22:29:00" status="1" subject="Отладить питон-скрипт BuildNumber.py" />
+<task actualstartdate="2012-11-05 23:37:45.027000" id="45866930-2780-11e2-a580-005056c00008" modificationDateTime="2013-06-04 23:46:07.790000" plannedstartdate="2012-11-05 23:37:45.027000" priority="10" status="1" subject="Упростить представление PeImage">
+<description>
+Сейчас все сырые заголовки : DOS, NT headers, описатели секций, экспорт, импорт и т.д. читаются самим классом PeImage. Нужно вынести логику их заполнения в отдельный вспомогательный
+</description>
+</task>
+<task actualstartdate="2013-05-30 12:17:22.131000" completiondate="2013-06-08 01:45:19.030000" creationDateTime="2013-05-30 12:17:01.295000" id="4ddbfff0-c901-11e2-816f-e9281c6e86a7" modificationDateTime="2013-06-08 01:45:19.030000" percentageComplete="100" status="1" subject="readpe не запускается под Windows XP" />
+<task actualstartdate="2012-11-21 16:59:44.051000" id="51f6cf40-33db-11e2-828c-005056c00008" plannedstartdate="2012-11-21 16:59:44.051000" status="1" subject="Операции деления. На предмет деления на 0" />
+<task completiondate="2011-10-15 11:53:00" id="581d7970-f4a6-11e0-ae10-005056c00008" percentageComplete="100" plannedstartdate="2011-10-12 11:46:00" status="1" subject="Генерация имени временного файла">
+<description>
+Новый метод: PathUtils::generateTempname()
+</description>
+</task>
+<task completiondate="2012-04-01 18:28:56.969000" id="590f07b0-fa80-11e0-9b10-005056c00008" percentageComplete="100" plannedstartdate="2011-10-19 22:29:00" priority="1" status="1" subject="Отремонтировать old-скрипт для тестирования">
+<description>
+$(SolutionDir)\tests\scripts\testTestVectors.py.
+DONE: Тепрь юзается Non-Smoker
+</description>
+</task>
+<task actualstartdate="2013-03-19 01:03:04.188000" creationDateTime="2013-02-22 09:47:32.494000" id="59f7d2de-7cb3-11e2-8bbb-e89a8f965467" modificationDateTime="2013-03-19 01:03:04.188000" status="1" subject="Поддержка формата UserDB.txt передавая в опции '--peid'" />
+<task actualstartdate="2013-03-01 10:59:19.035000" creationDateTime="2013-03-01 10:58:10.452000" id="60e12540-823d-11e2-924e-e89a8f965467" modificationDateTime="2013-06-04 23:44:06.652000" priority="10" status="1" subject="Тестовые вектора RvaToRaw/RawToRva для Corkami набора">
+<description>
+Написать тестовый проект создающий тестовые вектора для RvaToRaw/RawToRva. Основная цель Corkami набор
+</description>
+</task>
+<task actualstartdate="2013-05-30 12:17:53.003000" completiondate="2013-06-19 18:57:29.379000" creationDateTime="2013-05-30 12:17:36.014000" id="628dd9f0-c901-11e2-bbce-e9281c6e86a7" modificationDateTime="2013-06-19 18:57:29.379000" percentageComplete="100" status="1" subject="Переименовать класс PE::detailed::PeHelpers" />
+<task id="67b5b40f-f366-11e0-9f7f-005056c00008" plannedstartdate="2011-10-10 21:36:00" priority="1" status="1" subject="Парсер Mach-O файлов" />
+<task actualstartdate="2012-11-21 17:00:30.890000" completiondate="2013-01-26 21:27:04.967000" id="6de1b8a1-33db-11e2-8ec4-005056c00008" percentageComplete="100" plannedstartdate="2012-11-21 17:00:30.890000" status="1" subject="Юнит-тесты для PeImage при задании кастомного errorHandler">
+<description>
+Не требуется. Выпилен нафиг из проекта!
+</description>
+</task>
+<task actualstartdate="2013-06-04 23:46:48.585000" completiondate="2013-06-19 18:55:07.612000" creationDateTime="2013-06-04 23:46:21.932000" id="6ec91ac0-cd4f-11e2-a74f-daf82f5055a5" modificationDateTime="2013-06-19 18:55:07.612000" percentageComplete="100" priority="1" status="1" subject="Внутреннее представление опций командной строки" />
+<task id="711b194f-f366-11e0-ab5c-005056c00008" plannedstartdate="2011-10-10 21:36:00" priority="1" status="1" subject="Инструменты по работе с Macho-O файлов" />
+<task completiondate="2011-10-20 01:36:51.349000" id="722f8af0-f434-11e0-81d0-005056c00008" percentageComplete="100" plannedstartdate="2011-10-11 22:11:00" status="1" subject="Автоматизировать смену Build number">
+<description>
+Написан скрипт BuildNumber.py
+</description>
+</task>
+<task expandedContexts="('taskviewer',)" id="82e5159e-f366-11e0-b22c-005056c00008" plannedstartdate="2011-10-10 21:37:00" status="1" subject="Добавить поддержку чтения входных образов из STDIN и запись результата в STDOUT">
+<task id="01c7356e-f703-11e0-a455-005056c00008" plannedstartdate="2011-10-15 11:55:00" status="1" subject="Создание вЫходного временного файла" />
+<task id="0a9822e1-f703-11e0-9096-005056c00008" plannedstartdate="2011-10-15 11:55:00" status="1" subject="По завершении программы удалять временные файлы" />
+<task id="c4c30bd1-f7d0-11e0-bba0-005056c00008" plannedstartdate="2011-10-16 12:28:00" status="1" subject="Скопировать из STDIN во внутренний tmp-файл" />
+<task id="ec6aea9e-f702-11e0-9232-005056c00008" plannedstartdate="2011-10-15 11:54:00" status="1" subject="Создание входного временного файла" />
+</task>
+<task actualstartdate="2012-11-18 10:23:51.512000" expandedContexts="('taskviewer',)" id="851b9580-3148-11e2-90b6-005056c00008" plannedstartdate="2012-11-18 10:23:51.512000" status="1" subject="Извлечение детализации из PeImage и дампинг их в ReadPE">
+<task actualstartdate="2013-02-09 12:46:53.632000" id="40bc6c00-7295-11e2-879a-005056c00008" plannedstartdate="2013-02-09 12:46:53.632000" priority="7" status="1" subject="DelayImport" />
+<task actualstartdate="2012-11-18 10:24:51.687000" completiondate="2012-11-24 22:46:50.500000" expandedContexts="('taskviewer',)" id="a8f98f70-3148-11e2-8297-005056c00008" percentageComplete="100" plannedstartdate="2012-11-18 10:24:51.687000" status="1" subject="Секция релоков(rva,offset,type сырой и расшифрованный)" />
+<task id="c0df4440-3148-11e2-b19e-005056c00008" modificationDateTime="2013-03-19 01:03:23.532000" plannedstartdate="2012-11-18 10:25:31.780000" prerequisites="851b9580-3148-11e2-90b6-005056c00008" priority="7" status="1" subject="Ресурсы" />
+</task>
+<task actualstartdate="2012-11-21 17:01:20.192000" id="8b44c311-33db-11e2-b68d-005056c00008" plannedstartdate="2012-11-21 17:01:20.192000" priority="1" status="1" subject="Web-ресурсы для инспекций кода" />
+<task actualstartdate="2013-01-05 00:44:36.438000" completiondate="2013-02-09 12:43:39.767000" id="8d4c4e6e-56af-11e2-bb97-005056c00008" percentageComplete="100" plannedstartdate="2013-01-05 00:44:36.438000" priority="6" status="1" subject="Класс readpe::AppOptionsHolder">
+<description>
+Вместо варианта с singleton-ом упростить до простейшей функции в namespace.
+
+Resolved: Упрощено до не singleton-класса с переименованием на CmdlineParser
+</description>
+</task>
+<task actualstartdate="2013-06-04 23:47:46.808000" completiondate="2013-06-09 15:12:33.922000" creationDateTime="2013-06-04 23:47:13.322000" id="8d6abfb0-cd4f-11e2-ae86-daf82f5055a5" modificationDateTime="2013-06-09 15:12:33.922000" percentageComplete="100" status="1" subject="Сделать метод определения размера стрима StreamUtils::getSizeOfStream()" />
+<task completiondate="2012-04-01 18:29:15.656000" id="95da99a1-f366-11e0-844c-005056c00008" percentageComplete="100" plannedstartdate="2011-10-10 21:37:00" priority="2" status="1" subject="Библиотека-тестилка. На уровне использования тулзы.">
+<description>
+Сделан Non-Smoker
+</description>
+</task>
+<task actualstartdate="2012-11-11 00:02:50.107000" id="9ab024b0-2b71-11e2-a0a6-005056c00008" plannedstartdate="2012-11-11 00:02:50.107000" priority="5" status="1" subject="Переделать мои либы в Headers-only тип">
+<description>
+У каждой должны быть $(LibName)\interface.hpp и $(LibName)\implementation.hpp
+</description>
+</task>
+<task actualstartdate="2013-03-01 11:00:53.692000" creationDateTime="2013-03-01 10:59:52.204000" id="9d8744c0-823d-11e2-af2b-e89a8f965467" modificationDateTime="2013-03-01 11:00:53.691000" status="1" subject="Скрипт для создания C++ хидера" />
+<task completiondate="2012-06-29 13:49:17.352000" id="9dc6301e-f366-11e0-b677-005056c00008" percentageComplete="100" plannedstartdate="2011-10-10 21:38:00" priority="1" status="1" subject="Библиотека-тестилка. На уровне исходного кода библиотек и тулзы." />
+<task actualstartdate="2012-11-24 11:50:34.638000" completiondate="2012-11-24 23:41:39.515000" id="a0e41ae1-360b-11e2-abbd-005056c00008" percentageComplete="100" plannedstartdate="2012-11-24 11:50:34.637000" status="1" subject="Опция '--details,D' для ReadPE" />
+<task actualstartdate="2013-03-19 01:00:04.026000" completiondate="2013-04-09 00:51:06.026000" creationDateTime="2013-03-19 00:58:56.844000" id="a64b70c0-900e-11e2-a971-e89a8f965467" modificationDateTime="2013-04-09 00:51:06.025000" percentageComplete="100" priority="9" status="1" subject="Коды возврата ReadPE тулзой">
+<description>
+Приложение возвращает системе код завершения. Эти коды и нужно тестировать
+</description>
+</task>
+<task actualstartdate="2013-06-04 23:48:34.521000" completiondate="2013-06-09 15:12:25.579000" creationDateTime="2013-06-04 23:48:03.723000" id="ab752db0-cd4f-11e2-8561-daf82f5055a5" modificationDateTime="2013-06-09 15:12:25.579000" percentageComplete="100" status="1" subject="Настроить компиляцию тулзы под Win XP" />
+<task actualstartdate="2013-06-04 23:43:00.538000" creationDateTime="2013-06-04 23:41:14.694000" id="b7a84e61-cd4e-11e2-ac3d-daf82f5055a5" modificationDateTime="2013-06-04 23:45:24.564000" priority="11" status="1" subject="Переименовать OutputFormatter в OutputPrinter">
+<description>
+А также потомка JsonFormatter и функцию makeOutputFormatter()
+</description>
+</task>
+<task actualstartdate="2012-11-24 11:51:28.895000" expandedContexts="('taskviewer',)" id="c13b3800-360b-11e2-9297-005056c00008" plannedstartdate="2012-11-24 11:51:28.895000" status="1" subject="EFI-образы">
+<task actualstartdate="2012-11-24 11:51:50.687000" completiondate="2012-11-30 10:20:00.978000" id="ce3842f0-360b-11e2-a28a-005056c00008" percentageComplete="100" plannedstartdate="2012-11-24 11:51:50.687000" status="1" subject="Найти спецификации и добавить ссылки на них">
+<description>
+добавлены в libraries\libs\PE\doc\efi_urls.txt
+</description>
+</task>
+<task actualstartdate="2012-11-24 11:52:13.983000" id="dc1af2f0-360b-11e2-a1a2-005056c00008" plannedstartdate="2012-11-24 11:52:13.983000" status="1" subject="Создать новые EfiTypes.hpp,EfiConstants.hpp с нужными структурами, константами" />
+</task>
+<task completiondate="2011-10-16 12:29:40.089000" id="ce267ede-f4a7-11e0-92df-005056c00008" percentageComplete="100" plannedstartdate="2011-10-12 11:57:00" status="1" subject="Функции из ApplicationConfigurator во Framework">
+<task completiondate="2011-10-12 11:58:43.524000" id="e743c94f-f4a7-11e0-b60e-005056c00008" percentageComplete="100" plannedstartdate="2011-10-12 11:57:00" status="1" subject="trim()" />
+<task completiondate="2011-10-12 11:58:43.524000" id="eb3575e1-f4a7-11e0-b6b6-005056c00008" percentageComplete="100" plannedstartdate="2011-10-12 11:58:00" status="1" subject="extractBasename()" />
+<task completiondate="2011-10-12 11:58:43.524000" id="f03d264f-f4a7-11e0-b048-005056c00008" percentageComplete="100" plannedstartdate="2011-10-12 11:58:00" status="1" subject="extractDirectory()" />
+<task completiondate="2011-10-12 11:58:43.524000" id="f7cc1dde-f4a7-11e0-9324-005056c00008" percentageComplete="100" plannedstartdate="2011-10-12 11:58:00" status="1" subject="extractFileExstension()" />
+</task>
+<task actualstartdate="2013-03-19 01:03:15.484000" creationDateTime="2013-03-01 10:54:07.101000" id="cfd4e1de-823c-11e2-aa58-e89a8f965467" modificationDateTime="2013-06-04 23:43:59.493000" priority="10" status="1" subject="Включить юнит-тесты в debug-сборки" />
+<task actualstartdate="2012-09-02 12:18:44.648000" expandedContexts="('taskviewer',)" id="cfedea80-f4d6-11e1-b4da-005056c00008" modificationDateTime="2013-05-30 12:16:37.805000" plannedstartdate="2012-09-02 12:18:44.647000" status="1" subject="Поддержка виртуальных PE образов">
+<description>
+PE32\PE32+ образы делятся на виртуальные и файловые
+</description>
+<task actualstartdate="2012-11-05 23:34:10.577000" id="c5b3f00f-277f-11e2-8834-005056c00008" modificationDateTime="2013-05-30 12:16:53.253000" plannedstartdate="2012-11-05 23:34:10.577000" status="1" subject="Преобразование файлового образа в виртуальный">
+<description>
+Для более корректной работы с форматом PE лучше всего выделять память на SizeOfImage байт и туда по верх писать заголовок и секции, перед этим правильно посчитав их файловые офсеты и размеры
+</description>
+</task>
+</task>
+<task completiondate="2011-10-10 21:39:04.036000" id="daf7bc30-f365-11e0-9264-005056c00008" percentageComplete="100" plannedstartdate="2011-10-10 21:32:00" status="1" subject="Хидер с функцией, вот прототип &quot;void assert( expression, text );&quot;" />
+<task expandedContexts="('taskviewer',)" id="daff39de-f7d1-11e0-96ff-005056c00008" plannedstartdate="2011-10-16 12:35:00" priority="3" status="1" subject="Функциональность по verbose-опции">
+<description>
+Добавлена опция --verbose, подумать над дальнейшей работой, т.е. как все должно выглядеть в конечном итоге
+</description>
+<task actualstartdate="2012-11-10 23:59:20.659000" id="1dd8ea2e-2b71-11e2-bf49-005056c00008" plannedstartdate="2012-11-10 23:59:20.659000" status="1" subject="Написать враппер-методы вокруг Boost.locale и применить PO-файл" />
+<task id="a7fad25e-77e3-11e1-a67c-005056c00008" plannedstartdate="2012-03-27 12:05:45.734000" status="1" subject="Начать использовать какой-нибудь логер, возможно библиотеку glog или boost.log" />
+<task actualstartdate="2012-11-10 23:58:12.669000" id="f5529de1-2b70-11e2-8322-005056c00008" plannedstartdate="2012-11-10 23:58:12.669000" status="1" subject="Вынести текстовые сообщений в PO-файл">
+<description>
+Существует GNU тулза xgettext
+</description>
+</task>
+</task>
+<task actualstartdate="2013-03-01 11:02:45.930000" completiondate="2013-03-19 01:04:43.720000" creationDateTime="2013-03-01 11:01:41.236000" id="de843b40-823d-11e2-b84d-e89a8f965467" modificationDateTime="2013-03-19 01:04:43.719000" percentageComplete="100" status="1" subject="Бросание исключений в readpe.py">
+<description>
+Вместо кодов возврата бросать исключения, но в них должен быть код возврата
+</description>
+</task>
+<task completiondate="2011-10-16 12:30:52.411000" id="e244c1cf-f7d0-11e0-b4c1-005056c00008" percentageComplete="100" plannedstartdate="2011-10-16 12:28:00" status="1" subject="zeroStream из PeUtils во Framework" />
+<task actualstartdate="2013-06-04 23:51:38.798000" completiondate="2013-06-19 18:55:22.172000" creationDateTime="2013-06-04 23:49:44.426000" id="e77b3ca1-cd4f-11e2-bf13-daf82f5055a5" modificationDateTime="2013-06-19 18:55:22.172000" percentageComplete="100" status="1" subject="Переименовать класс PE::detailed::PeImageHelpers">
+<description>
+Либо разбить на два PeDirsOffsetsComputer и PeDirsSizesComputer
+</description>
+</task>
+<task actualstartdate="2013-03-19 01:02:01.772000" creationDateTime="2013-03-19 01:00:53.539000" id="ebd9af30-900e-11e2-ad92-e89a8f965467" modificationDateTime="2013-03-19 01:04:19.201000" priority="9" status="1" subject="Дока по сборке библиотек, проекта и настройке в MSVS проектах" />
+<task actualstartdate="2013-02-09 12:44:53.480000" id="f91eae80-7294-11e2-ad4d-005056c00008" plannedstartdate="2013-02-09 12:44:53.480000" status="1" subject="Упростить код PeImageDetails::Import()" />
+<task expandedContexts="('taskviewer',)" id="f971822e-f433-11e0-867a-005056c00008" plannedstartdate="2011-10-11 17:10:00" status="1" subject="Подсчитать MD5 вЫходных файлов">
+<task completiondate="2012-06-29 13:50:10.880000" id="22943591-f434-11e0-bdbe-005056c00008" percentageComplete="100" plannedstartdate="2011-10-11 22:09:00" status="1" subject="После изменения DOS, NT Headers, описателей NT sections" />
+<task id="6ce76830-f40a-11e0-a3a3-005056c00008" plannedstartdate="2011-10-11 17:10:00" status="1" subject="После добавленния новой секции" />
+</task>
+<category categorizables="38cf72b0-33db-11e2-9a60-005056c00008 51f6cf40-33db-11e2-828c-005056c00008 8b44c311-33db-11e2-b68d-005056c00008" expandedContexts="('categoryviewerinnoteeditor', 'categoryviewerintaskeditor')" id="1b140f11-33db-11e2-ae7e-005056c00008" status="1" subject="CodeReview">
+<description>
+Задачи связанные с инспекциями кода
+</description>
+</category>
+<category categorizables="141715cf-fa80-11e0-8fe0-005056c00008 1dd8ea2e-2b71-11e2-bf49-005056c00008 264c8e40-f366-11e0-aea1-005056c00008 2f480e1e-f366-11e0-b853-005056c00008 67b5b40f-f366-11e0-9f7f-005056c00008 711b194f-f366-11e0-ab5c-005056c00008 a0e41ae1-360b-11e2-abbd-005056c00008 daff39de-f7d1-11e0-96ff-005056c00008 f5529de1-2b70-11e2-8322-005056c00008" expandedContexts="('categoryviewerinnoteeditor', 'categoryviewerintaskeditor', 'categoryviewerintaskeditor1')" id="9bbbd6a1-f365-11e0-818c-005056c00008" status="1" subject="Wish" />
+<category categorizables="0d4b52ee-7295-11e2-8006-005056c00008 11b1001e-29dd-11e2-a073-005056c00008 122dc58f-f7d1-11e0-a89d-005056c00008 45866930-2780-11e2-a580-005056c00008 628dd9f0-c901-11e2-bbce-e9281c6e86a7 6ec91ac0-cd4f-11e2-a74f-daf82f5055a5 8d4c4e6e-56af-11e2-bb97-005056c00008 b7a84e61-cd4e-11e2-ac3d-daf82f5055a5 ce267ede-f4a7-11e0-92df-005056c00008 de843b40-823d-11e2-b84d-e89a8f965467 e244c1cf-f7d0-11e0-b4c1-005056c00008 e77b3ca1-cd4f-11e2-bf13-daf82f5055a5 f91eae80-7294-11e2-ad4d-005056c00008" expandedContexts="('categoryviewer', 'categoryviewerinnoteeditor', 'categoryviewerintaskeditor', 'categoryviewerintaskeditor1')" id="9c62e51e-f7d0-11e0-98fd-005056c00008" status="1" subject="Refactoring" />
+<category categorizables="16edb591-4500-11e2-aa3c-005056c00008 4274e5ae-fa80-11e0-bf37-005056c00008 4ddbfff0-c901-11e2-816f-e9281c6e86a7 590f07b0-fa80-11e0-9b10-005056c00008" expandedContexts="('categoryviewerinnoteeditor', 'categoryviewerintaskeditor', 'categoryviewerintaskeditor1')" id="a113069e-f365-11e0-b33f-005056c00008" status="1" subject="Bugs" />
+<category categorizables="0951d440-2b72-11e2-af58-005056c00008 10c2b140-f40a-11e0-b55d-005056c00008 1a5266c0-823d-11e2-a32f-e89a8f965467 581d7970-f4a6-11e0-ae10-005056c00008 59f7d2de-7cb3-11e2-8bbb-e89a8f965467 722f8af0-f434-11e0-81d0-005056c00008 82e5159e-f366-11e0-b22c-005056c00008 851b9580-3148-11e2-90b6-005056c00008 8d6abfb0-cd4f-11e2-ae86-daf82f5055a5 95da99a1-f366-11e0-844c-005056c00008 9ab024b0-2b71-11e2-a0a6-005056c00008 9d8744c0-823d-11e2-af2b-e89a8f965467 9dc6301e-f366-11e0-b677-005056c00008 a7fad25e-77e3-11e1-a67c-005056c00008 ab752db0-cd4f-11e2-8561-daf82f5055a5 c13b3800-360b-11e2-9297-005056c00008 c5b3f00f-277f-11e2-8834-005056c00008 ce3842f0-360b-11e2-a28a-005056c00008 cfedea80-f4d6-11e1-b4da-005056c00008 ebd9af30-900e-11e2-ad92-e89a8f965467" expandedContexts="('categoryviewerinnoteeditor', 'categoryviewerintaskeditor', 'categoryviewerintaskeditor1')" id="a428f92e-f365-11e0-a801-005056c00008" status="1" subject="Tasks" />
+<category categorizables="091048a1-33dc-11e2-afdf-005056c00008 25981170-77e3-11e1-9f3f-005056c00008 2607f19e-f40a-11e0-9889-005056c00008 3b548040-7cb3-11e2-8e55-e89a8f965467 3ea52f40-77e3-11e1-9642-005056c00008 60e12540-823d-11e2-924e-e89a8f965467 6ce76830-f40a-11e0-a3a3-005056c00008 6de1b8a1-33db-11e2-8ec4-005056c00008 a64b70c0-900e-11e2-a971-e89a8f965467 cfd4e1de-823c-11e2-aa58-e89a8f965467 daf7bc30-f365-11e0-9264-005056c00008 f971822e-f433-11e0-867a-005056c00008" expandedContexts="('categoryviewerinnoteeditor', 'categoryviewerintaskeditor', 'categoryviewerintaskeditor1')" id="c1a976b0-f365-11e0-acce-005056c00008" status="1" subject="Testing" />
+<note id="b8adce40-56af-11e2-b7bf-005056c00008" status="1" subject="Новая заметка" />
+<syncmlconfig>
+<TaskCoach-00000132eee2a8c3e0f6dc1000c000a800320001>
+<spds>
+<sources>
+<TaskCoach-00000132eee2a8c3e0f6dc1000c000a800320001.Tasks />
+<TaskCoach-00000132eee2a8c3e0f6dc1000c000a800320001.Notes />
+</sources>
+<syncml>
+<Auth />
+<Conn />
+</syncml>
+</spds>
+</TaskCoach-00000132eee2a8c3e0f6dc1000c000a800320001>
+</syncmlconfig>
+<guid>
+00000132eee2a8c3e0f6dc1000c000a800320001
+</guid>
+</tasks>

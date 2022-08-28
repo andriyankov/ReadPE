@@ -1,0 +1,359 @@
+
+namespace pe
+{
+
+
+enum class MaxCount
+{
+    SectionHeaders   = 100,
+    ImportDirHeaders = 100,
+    BoundDirHeaders  = 100,
+};
+
+enum class ReadOperation
+{
+    DosHeader        = 1 << 0,
+    NtHeaders        = 1 << 1,
+    SectionHeaders   = 1 << 2,
+    ExportDirHeader  = 1 << 3,
+    ImportDirHeaders = 1 << 4,
+    TlsDirHeader     = 1 << 5,
+    BoundDirHeaders  = 1 << 6,
+    RelocDirHeaders  = 1 << 7,
+    LoadConfigDir    = 1 << 8,
+};
+
+
+#if !defined(IS_FLAG_SET)
+#define IS_FLAG_SET(S1, S2) \
+    ((S1 & static_cast<uint64_t>(ReadOperation::S2)) > 0)
+#endif
+
+#if !defined(SET_FLAG)
+#define SET_FLAG(S1, S2) \
+    S1 |= static_cast<uint64_t>(ReadOperation::S2)
+#endif
+
+
+template<typename T>
+void clearContainer(std::vector<T>& container, MaxCount count)
+{
+    container.clear();
+    container.resize(static_cast<size_t>(count));
+}
+
+template<typename Arch>
+Image<Arch>::Impl::Impl(std::iostream& stream, Image<Arch>& image_)
+    : image(image_)
+    , imgSize(-1)
+    , imgStream(stream)
+    , readOperations(0)
+    , dosHeader()
+    , ntHeaders()
+    , exportDirectory()
+    , tlsDirectory()
+    , loadConfigDirectory()
+{
+    clear();
+}
+
+template<typename Arch>
+void Image<Arch>::Impl::clear()
+{
+    readOperations = 0;
+    clearContainer(sectionHeaders, MaxCount::SectionHeaders);
+    clearContainer(importsDirectories, MaxCount::ImportDirHeaders);
+    clearContainer(boundDirectories, MaxCount::BoundDirHeaders);
+}
+
+template<typename Arch>
+void Image<Arch>::Impl::readDosHeader()
+{
+    if (IS_FLAG_SET(readOperations, DosHeader))
+        return;
+    try {
+        imgStream.seekg(0);
+        imgStream.read((char*)&dosHeader, sizeof(dosHeader));
+        SET_FLAG (readOperations, DosHeader) ;
+    }
+    catch (const std::ios::failure&) {
+        throw CorruptedException("Cannot read Dos Header");
+    }
+    if (Signature::DOS != dosHeader.e_magic) {
+        throw FormatException("Incorrect Dos Signature");
+    }
+}
+
+template<typename Arch>
+void Image<Arch>::Impl::readNtHeaders()
+{
+    if (IS_FLAG_SET(readOperations, NtHeaders))
+        return;
+    try {
+        imgStream.seekg(image.getDosHeader().e_lfanew);
+        imgStream.read((char*)&ntHeaders,sizeof(ntHeaders));
+        SET_FLAG (readOperations, NtHeaders) ;
+    }
+    catch (const std::ios::failure&) {
+        throw CorruptedException("Cannot read NT Headers");
+    }
+
+    if (Signature::PE != ntHeaders.Signature)
+        throw FormatException("Incorrect NT Signature");
+
+    uint16_t magic = ntHeaders.OptionalHeader.Magic;
+    if (! (OptionalHeader::Magic32 == magic || OptionalHeader::Magic64 == magic))
+        throw FormatException( "Incorrect Optional Header Magic" );
+
+    if (!detect::isMachineSupported(ntHeaders.FileHeader.Machine))
+        throw UnsupportedException( "Unsupported Machine image" );
+}
+
+template<typename Arch>
+void Image<Arch>::Impl::readNtSections()
+{
+    if (IS_FLAG_SET(readOperations, SectionHeaders))
+        return;
+    try {
+        const auto& info = headers_utils::getSectionHeadersInfo(image);
+        if (info.pos != utils::INVALID_RAW) {
+            size_t count = info.size / sizeof(ImgSectionHeader);
+            if (count > 0) {
+                sectionHeaders.resize(count);
+                imgStream.seekg(info.pos);
+                imgStream.read(reinterpret_cast<char*>(&sectionHeaders[0]), info.size);
+            }
+        }
+        SET_FLAG (readOperations, SectionHeaders) ;
+    }
+    catch (const std::ios::failure&) {
+        throw CorruptedException("Cannot read NT Sections Headers area");
+    }
+}
+
+template<typename Arch>
+void Image<Arch>::Impl::readExportDirectoryHeader()
+{
+    if (IS_FLAG_SET(readOperations, ExportDirHeader))
+        return;
+    try {
+        const auto& info = headers_utils::getExportDirInfo(image);
+        if (info.pos != utils::INVALID_RAW) {
+            imgStream.seekg(info.pos);
+            imgStream.read(reinterpret_cast<char*>(&exportDirectory), info.size);
+        }
+        SET_FLAG (readOperations, ExportDirHeader) ;
+    }
+    catch (const std::ios::failure&) {
+        throw CorruptedException("Cannot read Export directory header");
+    }
+}
+
+template<typename Arch>
+void Image<Arch>::Impl::readImportDirectoryHeaders()
+{
+    if (IS_FLAG_SET(readOperations, ImportDirHeaders))
+        return;
+    try {
+        const auto& info = headers_utils::getImportDirsInfo(image);
+        if (info.pos != utils::INVALID_RAW && info.size >= sizeof(ImgImportDescriptor))
+        {
+            auto count = info.size / sizeof(ImgImportDescriptor);
+            auto size = utils::correctFileDataSize(image, info.pos, info.size);
+            importsDirectories.resize(count);
+            imgStream.seekg(info.pos);
+            imgStream.read(reinterpret_cast<char*>(&importsDirectories[0]), size);
+        }
+        SET_FLAG (readOperations, ImportDirHeaders) ;
+    }
+    catch (const std::ios::failure&) {
+        throw CorruptedException("Cannot read Import Directory header");
+    }
+}
+
+template<typename Arch>
+void Image<Arch>::Impl::readTlsDirectoryHeader()
+{
+    if (IS_FLAG_SET(readOperations, TlsDirHeader))
+        return;
+    try {
+        const auto& info = headers_utils::getTlsDirInfo(image);
+        if (info.pos != utils::INVALID_RAW) {
+            imgStream.seekg(info.pos);
+            imgStream.read(reinterpret_cast<char*>(&tlsDirectory), info.size);
+        }
+        SET_FLAG (readOperations, TlsDirHeader) ;
+    }
+    catch (const std::ios::failure&) {
+        throw CorruptedException("Cannot read TLS directory header");
+    }
+}
+
+template<typename Arch>
+void Image<Arch>::Impl::readBoundDirectoryHeaders()
+{
+    if (IS_FLAG_SET(readOperations, BoundDirHeaders))
+        return;
+    try {
+        const auto& info = headers_utils::getBoundImportDirInfo(image);
+        if (info.pos != utils::INVALID_RAW) {
+            size_t count = info.size / sizeof(ImgBoundImportDescriptor);
+            if (count > 0) {
+                auto size = utils::correctFileDataSize(image, info.pos, info.size);
+                boundDirectories.resize(count);
+                imgStream.seekg(info.pos);
+                imgStream.read(reinterpret_cast<char*>(&boundDirectories[0]), size);
+            }
+        }
+        SET_FLAG (readOperations, BoundDirHeaders) ;
+    }
+    catch (const std::ios::failure&) {
+        throw CorruptedException("Cannot read Bound directory headers");
+    }
+}
+
+template<typename Arch>
+void Image<Arch>::Impl::readRelocationDirectories()
+{
+    if (IS_FLAG_SET(readOperations, RelocDirHeaders))
+        return;
+    const auto& info = headers_utils::getRelocationDirInfo(image);
+    if (info.pos == utils::INVALID_RAW) {
+        SET_FLAG(readOperations, RelocDirHeaders) ;
+        return;
+    }
+    try {
+        auto relocsPos = info.pos;
+        const auto& optHeader = image.getNtHeaders().OptionalHeader;
+        Aligner alinger(optHeader.FileAlignment, optHeader.SectionAlignment);
+        uint32_t imgSize = alinger.getVirtualSize(optHeader.SizeOfImage);
+
+        bool continue_ = true;
+        uint32_t curSize = 0;
+        do {
+            ImgBaseRelocation relocsBlock;
+            imgStream.seekg(relocsPos);
+            imgStream.read(reinterpret_cast<char*>(&relocsBlock), sizeof(relocsBlock));
+
+            bool areRelocsExists =
+                (0 < relocsBlock.VirtualAddress) && (relocsBlock.VirtualAddress < imgSize) &&
+                (relocsBlock.SizeOfBlock > 0);
+
+            if (areRelocsExists)
+                relocationDirectories.push_back(relocsBlock);
+
+            relocsPos += relocsBlock.SizeOfBlock;
+            curSize += relocsBlock.SizeOfBlock;
+            continue_ = (relocsBlock.SizeOfBlock > sizeof(relocsBlock)) && (curSize < info.size);
+        }
+        while (continue_);
+        SET_FLAG(readOperations, RelocDirHeaders) ;
+    }
+    catch (const std::ios::failure&) {
+        throw CorruptedException("Cannot read Relocation directory headers");
+    }
+}
+
+template<typename Arch>
+void Image<Arch>::Impl::readLoadConfigDirectory()
+{
+    if (IS_FLAG_SET(readOperations, LoadConfigDir))
+        return;
+    try {
+        const auto& info = headers_utils::getImgLoadConfigDirectoryInfo(image);
+        if (info.pos != utils::INVALID_RAW) {
+            imgStream.seekg(info.pos);
+            imgStream.read(reinterpret_cast<char*>(&loadConfigDirectory), info.size);
+        }
+        SET_FLAG (readOperations, LoadConfigDir) ;
+    }
+    catch (const std::ios::failure&) {
+        throw CorruptedException("Cannot read Load Config directory header");
+    }
+}
+
+template<typename Arch>
+void Image<Arch>::Impl::writeDosHeader()
+{
+    imgStream.seekp(0);
+    imgStream.write(reinterpret_cast<char*>(&dosHeader), sizeof(dosHeader));
+}
+
+template<typename Arch>
+void Image<Arch>::Impl::writeNtHeaders()
+{
+    imgStream.seekp(image.getDosHeader().e_lfanew);
+    imgStream.write(reinterpret_cast<char*>(&ntHeaders), sizeof(ntHeaders));
+}
+
+template<typename Arch>
+void Image<Arch>::Impl::writeNtSections()
+{
+    const auto& info = headers_utils::getSectionHeadersInfo(image);
+    imgStream.seekp(info.pos);
+    imgStream.write(reinterpret_cast<char*>(&sectionHeaders[0]), info.size);
+}
+
+template<typename Arch>
+void Image<Arch>::Impl::writeExportDirectoryHeader()
+{
+    const auto& info = headers_utils::getExportDirInfo(image);
+    if (info.pos != utils::INVALID_RAW) {
+        imgStream.seekp(info.pos);
+        imgStream.write(reinterpret_cast<char*>(&exportDirectory), info.size);
+    }
+}
+
+template<typename Arch>
+void Image<Arch>::Impl::writeImportDirectoryHeaders()
+{
+    const auto& info = headers_utils::getBoundImportDirInfo(image);
+    if (info.pos != utils::INVALID_RAW) {
+        auto size = utils::correctFileDataSize(image, info.pos, info.size);
+        imgStream.seekp(info.pos);
+        imgStream.write(reinterpret_cast<char*>(&importsDirectories[0]), size);
+    }
+}
+
+template<typename Arch>
+void Image<Arch>::Impl::writeTlsDirectoryHeader()
+{
+    const auto& info = headers_utils::getTlsDirInfo(image);
+    if (info.pos != utils::INVALID_RAW) {
+        imgStream.seekp(info.pos);
+        imgStream.write(reinterpret_cast<char*>(&tlsDirectory), info.size);
+    }
+}
+
+template<typename Arch>
+void Image<Arch>::Impl::writeBoundDirectoryHeaders()
+{
+    const auto& info = headers_utils::getBoundImportDirInfo(image);
+    if (info.pos != utils::INVALID_RAW) {
+        auto size = utils::correctFileDataSize(image, info.pos, info.size);
+        imgStream.seekp(info.pos);
+        imgStream.write(reinterpret_cast<char*>(&boundDirectories[0]), size);
+    }
+}
+
+template<typename Arch>
+void Image<Arch>::Impl::writeLoadConfigDirectory()
+{
+    const auto& info = headers_utils::getImgLoadConfigDirectoryInfo(image);
+    if (info.pos != utils::INVALID_RAW) {
+        imgStream.seekp(info.pos);
+        imgStream.write(reinterpret_cast<char*>(&loadConfigDirectory), info.size);
+    }
+}
+
+
+#if defined(IS_FLAG_SET)
+#undef IS_FLAG_SET
+#endif
+
+#if defined(SET_FLAG)
+#undef SET_FLAG
+#endif
+
+
+} // namespace pe

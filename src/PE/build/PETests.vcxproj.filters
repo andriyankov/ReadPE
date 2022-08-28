@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="etc">
+      <UniqueIdentifier>{4c721d87-a692-404f-ad83-77848f5e6f4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{5a7d07ac-fafb-457b-ae05-942c4be42f5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="implementation">
+      <UniqueIdentifier>{717d1267-8b68-4c68-8001-552d2fb2a045}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\test\implementation\std.cpp">
+      <Filter>etc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\test\AlignerTest_WhenAlignmentUse.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\test\AlignerTest_WhenAlignmentUse2.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\test\HeadersReadTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\test\SectionDetailsTest.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\test\UtilsTest_With_32Bit_Image.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\test\UtilsTest_With_64Bit_Image.cpp">
+      <Filter>Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\test\implementation\appmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\test\implementation\TestData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\test\implementation\std.hpp">
+      <Filter>etc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\implementation\Fixture.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\implementation\TestData.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
