@@ -149,7 +149,7 @@
       <Message>Update the Application version info</Message>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>c:\\python310\\python.exe -u $(SolutionDir)\\..\\scripts\\SmokyTest.py $(TargetPath) $(SolutionDir)\\..\\test-data\\expected-results\\smoky\\report.txt $(SolutionDir)\\..\\test-data\\test-samples\\smoky\\ $(OutDir)</Command>
+      <Command>c:\\python310\\python.exe -u $(SolutionDir)\\..\\scripts\\SmokyTest.py $(TargetPath) $(SolutionDir)\\..\\tests\\test-data\\expected-results\\smoky\\report.txt $(SolutionDir)\\..\\tests\\test-data\\test-samples\\smoky\\ $(OutDir)</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Smoky Testing</Message>
@@ -180,7 +180,7 @@
       <Message>Update the Application version info</Message>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>c:\\python310\\python.exe -u $(SolutionDir)\\..\\scripts\\SmokyTest.py $(TargetPath) $(SolutionDir)\\..\\test-data\\expected-results\\smoky\\report.txt $(SolutionDir)\\..\\test-data\\test-samples\\smoky\\ $(OutDir)</Command>
+      <Command>c:\\python310\\python.exe -u $(SolutionDir)\\..\\scripts\\SmokyTest.py $(TargetPath) $(SolutionDir)\\..\\tests\\test-data\\expected-results\\smoky\\report.txt $(SolutionDir)\\..\\tests\\test-data\\test-samples\\smoky\\ $(OutDir)</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Smoky Testing</Message>
