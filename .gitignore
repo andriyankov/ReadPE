@@ -1,6 +1,7 @@
 # use glob syntax.
 syntax: glob
 
+*.egg-info/
 .vs/
 env/
 build/
