@@ -19,30 +19,30 @@ class ExitCode(IntEnum):
     NOT_IMPLEMENTED = 7
     CONFIGURE_TOOL = 8
 
-_TOOL_NAME = 'readpe.exe'
-_TOOL_NAME_PATTERN = 'readpe(.*).exe'
-_DEFAULT_TOOL_ARGS = '--nologo --raw --export --imports --tls --detailed'
+_APP_PATH = 'readpe.exe'
+_APP_NAME_PATTERN = 'readpe.*.exe'
+_DEFAULT_APP_ARGS = '--nologo --raw --export --imports --tls --detailed'
 
 
 class ReadpeException(Exception):
-    def __init__(self, tool_result):
+    def __init__(self, app_result):
         super().__init__()
-        self.__tool_result = tool_result
+        self.__app_result = app_result
 
     def __str__(self):
         return f'Exit code: {self.error_code}'
 
     @property
     def error_code(self):
-        return self.__tool_result['retcode']
+        return self.__app_result['retcode']
 
     @property
     def stdout(self):
-        return self.__tool_result['stdout']
+        return self.__app_result['stdout']
 
     @property
     def stderr(self):
-        return self.__tool_result['stderr']
+        return self.__app_result['stderr']
 
 
 class ScriptException(Exception):
@@ -55,21 +55,31 @@ class ScriptException(Exception):
 
 
 class ReadPE:
-    def __init__(self):
-        self.__apppath = 'readpe'
-        self.__args = '--nologo --all'
-        self.__tool_result = dict()
+    def __init__(self, apppath=_APP_PATH, args=_DEFAULT_APP_ARGS):
+        self.__check_apppath(apppath)
+        self.__apppath = apppath
+        self.__args = args
+        self.__app_result = dict()
+
+    def __check_apppath(self, path):
+        # Проверка от случайной передачи пути к файлу малвари
+        cur_app_name = os.path.basename(path)
+        name_re = re.compile(_APP_NAME_PATTERN, re.IGNORECASE)
+        if name_re.match(cur_app_name) is None:
+            fmt = 'Expected app name: "%s", Current name: "%s"'
+            err_text = fmt % (_APP_PATH, cur_app_name)
+            raise ScriptException(err_text)
 
     def __check_srcfile(self, srcfile):
         if not os.path.exists(srcfile):
             raise ScriptException('Source file not exists')
 
     def __check_results(self):
-        if self.__tool_result['retcode'] != ExitCode.SUCCESS:
-            raise ReadpeException(self.__tool_result)
-        if not self.__tool_result['stdout']:
+        if self.__app_result['retcode'] != ExitCode.SUCCESS:
+            raise ReadpeException(self.__app_result)
+        if not self.__app_result['stdout']:
             raise ScriptException('STDOUT is empty')
-        if not self.__tool_result['stderr']:
+        if not self.__app_result['stderr']:
             raise ScriptException('STDERR is empty')
 
     def __run_process(self, args):
@@ -79,63 +89,44 @@ class ReadPE:
         proc.stdout.close()
         proc.stderr.close()
         proc.wait()
-        self.__tool_result['retcode'] = proc.returncode
-        self.__tool_result['stdout'] = stdout_bin.decode('ascii')
-        self.__tool_result['stderr'] = stderr_bin.decode('ascii')
+        self.__app_result['retcode'] = proc.returncode
+        self.__app_result['stdout'] = stdout_bin.decode('ascii')
+        self.__app_result['stderr'] = stderr_bin.decode('ascii')
         self.__check_results()
 
     def run(self, srcfile):
         self.__check_srcfile(srcfile)
         try:
-            args = '%s %s "%s"' % (self.__apppath, self.__args, srcfile)
-            self.__run_process(args)
+            cmdline = f'{self.__apppath} {self.__args} "{srcfile}"'
+            self.__run_process(cmdline)
         except UnicodeDecodeError as e:
             raise ScriptException('Connot decode ReadPE stdout or stderr')
 
-    def __is_it_readpe(self, filename):
-        name_re = re.compile(_TOOL_NAME_PATTERN, re.IGNORECASE)
-        return not name_re.match(filename) is None
-
-    def set_app_path(self, path):
-        # Проверка от случайной передачи пути к файлу малвари
-        cur_tool_name = os.path.basename(path)
-        if self.__is_it_readpe(cur_tool_name):
-            self.__apppath = path
-        else:
-            fmt = 'Expected tool name: "%s", Current name: "%s"'
-            err_text = fmt % (_TOOL_NAME, cur_tool_name)
-            raise ScriptException(err_text)
-
-    def set_command_args(self, args):
-        self.__args = args
-
     @property
     def stdout(self):
-        return self.__tool_result['stdout']
+        return self.__app_result['stdout']
 
     @property
     def stderr(self):
-        return self.__tool_result['stderr']
+        return self.__app_result['stderr']
 
 
-def call_readpe_tool(filename, apppath='readpe.exe', args=_DEFAULT_TOOL_ARGS):
-    rpe = ReadPE()
-    rpe.set_app_path(apppath)
-    rpe.set_command_args(args)
+def call_readpe_tool(filename, apppath='readpe.exe', args=_DEFAULT_APP_ARGS):
+    rpe = ReadPE(apppath, args)
     rpe.run(filename)
-    return dict(stdout=rpe.stdout, stderr=rpe.stderr)
+    return {'stdout': rpe.stdout, 'stderr': rpe.stderr}
 
 
 if __name__ == '__main__':
     try:
-        tool_file = sys.argv[1]
+        app_file = sys.argv[1]
         test_file = sys.argv[2]
-        results = call_readpe_tool(test_file, tool_file)
+        results = call_readpe_tool(test_file, app_file)
         print('[DEBUG] [STDERR]\n%s' % results['stderr'], file=sys.stderr)
         print('[DEBUG] [STDOUT]\n%s' % results['stdout'], file=sys.stderr)
         print('\n', file=sys.stderr)
     except ReadpeException as e:
-        print('ReadPE tool error. %s' % e, file=sys.stderr)
+        print(f'ReadPE tool error. {str(e)}', file=sys.stderr)
         sys.exit(1)
     except ScriptException as e:
         print(str(e), file=sys.stderr)
