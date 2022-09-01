@@ -1,6 +1,5 @@
 
 import os
-import sys
 import json
 import hashlib
 
@@ -10,12 +9,12 @@ __all__ = ['TestSampleException', 'TestSample']
 
 
 class TestSampleException(Exception):
-    def __init__(self, errTxt):
+    def __init__(self, err_text):
         super().__init__()
-        self.__errTxt = errTxt
+        self.__err_text = err_text
 
     def __str__(self):
-        return self.__errTxt
+        return self.__err_text
 
 
 def _new_filename(directory, filename, extension):
@@ -49,16 +48,16 @@ def _md5_of_text(strContent):
 
 
 class TestSample:
-    def __init__(self, filename, toolFile='readpe.exe', cmdlineArgs=''):
-        self.__toolFile = toolFile
-        self.__cmdlineArgs = cmdlineArgs
+    def __init__(self, filename, tool_file='readpe.exe', cmdline_args=''):
+        self.__tool_file = tool_file
+        self.__cmdline_args = cmdline_args
         self.__descriptor = dict()
         self.__descriptor['source-filename'] = filename
         self.__descriptor['source-md5'] = _md5_of_file(filename)
         self.__clean_results()
 
     def __clean_results(self):
-        self.__descriptor['retcode'] = readpe.E_SUCCESS
+        self.__descriptor['retcode'] = readpe.ExitCode.SUCCESS
         self.__descriptor['stdout-content'] = ''
         self.__descriptor['stderr-content'] = ''
 
@@ -66,12 +65,12 @@ class TestSample:
         self.__clean_results()
         filename = self.__descriptor['source-filename']
         try:
-            if self.__cmdlineArgs:
-                toolResult = readpe.call_readpe_tool(filename, self.__toolFile, self.__cmdlineArgs)
+            if self.__cmdline_args:
+                tool_result = readpe.call_readpe_tool(filename, self.__tool_file, self.__cmdline_args)
             else:
-                toolResult = readpe.call_readpe_tool(filename, self.__toolFile)
-            self.__descriptor['stdout-content'] = toolResult['stdout']
-            self.__descriptor['stderr-content'] = toolResult['stderr']
+                tool_result = readpe.call_readpe_tool(filename, self.__tool_file)
+            self.__descriptor['stdout-content'] = tool_result['stdout']
+            self.__descriptor['stderr-content'] = tool_result['stderr']
         except readpe.ReadpeException as e:
             self.__descriptor['retcode'] = e.error_code
             self.__descriptor['stdout-content'] = e.stdout
