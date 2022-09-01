@@ -1,446 +1,446 @@
 {
 	"Dos-Header": {
-		"e_cblp": "0x90", 
-		"e_cp": "0x3", 
-		"e_cparhdr": "0x4", 
-		"e_crlc": "0x0", 
-		"e_cs": "0x0", 
-		"e_csum": "0x0", 
-		"e_ip": "0x0", 
-		"e_lfanew": "0xD8", 
-		"e_lfarlc": "0x40", 
-		"e_magic": "0x5A4D", 
-		"e_maxalloc": "0xFFFF", 
-		"e_minalloc": "0x0", 
-		"e_oemid": "0x0", 
-		"e_oeminfo": "0x0", 
-		"e_ovno": "0x0", 
+		"e_cblp": "0x90",
+		"e_cp": "0x3",
+		"e_cparhdr": "0x4",
+		"e_crlc": "0x0",
+		"e_cs": "0x0",
+		"e_csum": "0x0",
+		"e_ip": "0x0",
+		"e_lfanew": "0xD8",
+		"e_lfarlc": "0x40",
+		"e_magic": "0x5A4D",
+		"e_maxalloc": "0xFFFF",
+		"e_minalloc": "0x0",
+		"e_oemid": "0x0",
+		"e_oeminfo": "0x0",
+		"e_ovno": "0x0",
 		"e_res": [
-			"0x0", 
-			"0x0", 
-			"0x0", 
+			"0x0",
+			"0x0",
+			"0x0",
 			"0x0"
-		], 
+		],
 		"e_res2": [
-			"0x0", 
-			"0x0", 
-			"0x0", 
-			"0x0", 
-			"0x0", 
-			"0x0", 
-			"0x0", 
-			"0x0", 
-			"0x0", 
+			"0x0",
+			"0x0",
+			"0x0",
+			"0x0",
+			"0x0",
+			"0x0",
+			"0x0",
+			"0x0",
+			"0x0",
 			"0x0"
-		], 
-		"e_sp": "0xB8", 
+		],
+		"e_sp": "0xB8",
 		"e_ss": "0x0"
-	}, 
+	},
 	"NT-Headers": {
 		"FileHeader": {
-			"Characteristics": "0x2102", 
-			"Machine": "0x14C", 
-			"NumberOfSections": "3", 
-			"NumberOfSymbols": "0", 
-			"PointerToSymbolTable": "0x0", 
-			"SizeOfOptionalHeader": "0xE0", 
+			"Characteristics": "0x2102",
+			"Machine": "0x14C",
+			"NumberOfSections": "3",
+			"NumberOfSymbols": "0",
+			"PointerToSymbolTable": "0x0",
+			"SizeOfOptionalHeader": "0xE0",
 			"TimeDateStamp": "0x4A5BDAB3"
-		}, 
+		},
 		"OptionalHeader": {
-			"AddressOfEntryPoint": "0x1030", 
-			"BaseOfCode": "0x1000", 
-			"CheckSum": "0xDC4D", 
+			"AddressOfEntryPoint": "0x1030",
+			"BaseOfCode": "0x1000",
+			"CheckSum": "0xDC4D",
 			"DataDirectory": [
 				{
-					"Size": "0x9C", 
+					"Size": "0x9C",
 					"VirtualAddress": "0x10E4"
-				}, 
+				},
 				{
-					"Size": "0x50", 
+					"Size": "0x50",
 					"VirtualAddress": "0x14F8"
-				}, 
+				},
 				{
-					"Size": "0x3E8", 
+					"Size": "0x3E8",
 					"VirtualAddress": "0x2000"
-				}, 
+				},
 				{
-					"Size": "0x0", 
+					"Size": "0x0",
 					"VirtualAddress": "0x0"
-				}, 
+				},
 				{
-					"Size": "0x0", 
+					"Size": "0x0",
 					"VirtualAddress": "0x0"
-				}, 
+				},
 				{
-					"Size": "0x20", 
+					"Size": "0x20",
 					"VirtualAddress": "0x3000"
-				}, 
+				},
 				{
-					"Size": "0x38", 
+					"Size": "0x38",
 					"VirtualAddress": "0x15F0"
-				}, 
+				},
 				{
-					"Size": "0x0", 
+					"Size": "0x0",
 					"VirtualAddress": "0x0"
-				}, 
+				},
 				{
-					"Size": "0x0", 
+					"Size": "0x0",
 					"VirtualAddress": "0x0"
-				}, 
+				},
 				{
-					"Size": "0x0", 
+					"Size": "0x0",
 					"VirtualAddress": "0x0"
-				}, 
+				},
 				{
-					"Size": "0x0", 
+					"Size": "0x0",
 					"VirtualAddress": "0x0"
-				}, 
+				},
 				{
-					"Size": "0x4C", 
+					"Size": "0x4C",
 					"VirtualAddress": "0x248"
-				}, 
+				},
 				{
-					"Size": "0x24", 
+					"Size": "0x24",
 					"VirtualAddress": "0x1000"
-				}, 
+				},
 				{
-					"Size": "0x0", 
+					"Size": "0x0",
 					"VirtualAddress": "0x0"
-				}, 
+				},
 				{
-					"Size": "0x0", 
+					"Size": "0x0",
 					"VirtualAddress": "0x0"
-				}, 
+				},
 				{
-					"Size": "0x0", 
+					"Size": "0x0",
 					"VirtualAddress": "0x0"
 				}
-			], 
-			"DllCharacteristics": "0x540", 
-			"FileAlignment": "0x200", 
-			"ImageBase": "0x40300000", 
-			"LoaderFlags": "0x0", 
-			"Magic": "0x10B", 
-			"MajorImageVersion": "6", 
-			"MajorLinkerVersion": "9", 
-			"MajorOperatingSystemVersion": "6", 
-			"MajorSubsystemVersion": "6", 
-			"MinorImageVersion": "1", 
-			"MinorLinkerVersion": "0", 
-			"MinorOperatingSystemVersion": "1", 
-			"MinorSubsystemVersion": "1", 
-			"NumberOfRvaAndSizes": "16", 
-			"SectionAlignment": "0x1000", 
-			"SizeOfCode": "0x800", 
-			"SizeOfHeaders": "0x400", 
-			"SizeOfHeapCommit": "0x1000", 
-			"SizeOfHeapReserve": "0x100000", 
-			"SizeOfImage": "0x4000", 
-			"SizeOfInitializedData": "0x600", 
-			"SizeOfStackCommit": "0x1000", 
-			"SizeOfStackReserve": "0x40000", 
-			"SizeOfUninitializedData": "0x0", 
-			"Subsystem": "0x2", 
+			],
+			"DllCharacteristics": "0x540",
+			"FileAlignment": "0x200",
+			"ImageBase": "0x40300000",
+			"LoaderFlags": "0x0",
+			"Magic": "0x10B",
+			"MajorImageVersion": "6",
+			"MajorLinkerVersion": "9",
+			"MajorOperatingSystemVersion": "6",
+			"MajorSubsystemVersion": "6",
+			"MinorImageVersion": "1",
+			"MinorLinkerVersion": "0",
+			"MinorOperatingSystemVersion": "1",
+			"MinorSubsystemVersion": "1",
+			"NumberOfRvaAndSizes": "16",
+			"SectionAlignment": "0x1000",
+			"SizeOfCode": "0x800",
+			"SizeOfHeaders": "0x400",
+			"SizeOfHeapCommit": "0x1000",
+			"SizeOfHeapReserve": "0x100000",
+			"SizeOfImage": "0x4000",
+			"SizeOfInitializedData": "0x600",
+			"SizeOfStackCommit": "0x1000",
+			"SizeOfStackReserve": "0x40000",
+			"SizeOfUninitializedData": "0x0",
+			"Subsystem": "0x2",
 			"Win32VersionValue": "0"
-		}, 
+		},
 		"Signature": "0x4550"
-	}, 
+	},
 	"bound-directories-details": [
 		{
-			"moduleName": "msvcrt.dll", 
-			"moduleNamePos": "0x270", 
-			"moduleNameRva": "0x270", 
+			"moduleName": "msvcrt.dll",
+			"moduleNamePos": "0x270",
+			"moduleNameRva": "0x270",
 			"timestampUTC0": "Tue, 2009-Jul-14, 01:07:59"
-		}, 
+		},
 		{
-			"moduleName": "ntdll.dll", 
-			"moduleNamePos": "0x27B", 
-			"moduleNameRva": "0x27B", 
+			"moduleName": "ntdll.dll",
+			"moduleNamePos": "0x27B",
+			"moduleNameRva": "0x27B",
 			"timestampUTC0": "Tue, 2009-Jul-14, 01:09:47"
-		}, 
+		},
 		{
 			"forwarders": [
 				{
-					"moduleName": "ntdll.dll", 
-					"moduleNamePos": "0x27B", 
-					"moduleNameRva": "0x27B", 
+					"moduleName": "ntdll.dll",
+					"moduleNamePos": "0x27B",
+					"moduleNameRva": "0x27B",
 					"timestampUTC0": "Tue, 2009-Jul-14, 01:09:47"
 				}
-			], 
-			"moduleName": "KERNEL32.dll", 
-			"moduleNamePos": "0x285", 
-			"moduleNameRva": "0x285", 
+			],
+			"moduleName": "KERNEL32.dll",
+			"moduleNamePos": "0x285",
+			"moduleNameRva": "0x285",
 			"timestampUTC0": "Tue, 2009-Jul-14, 01:09:01"
 		}
-	], 
+	],
 	"bound-directories-headers": [
 		{
-			"NumberOfModuleForwarderRefs": "0", 
-			"OffsetModuleName": "0x28", 
-			"TimeDateStamp": "0x4A5BDA6F", 
+			"NumberOfModuleForwarderRefs": "0",
+			"OffsetModuleName": "0x28",
+			"TimeDateStamp": "0x4A5BDA6F",
 			"forwarders": null
-		}, 
+		},
 		{
-			"NumberOfModuleForwarderRefs": "0", 
-			"OffsetModuleName": "0x33", 
-			"TimeDateStamp": "0x4A5BDADB", 
+			"NumberOfModuleForwarderRefs": "0",
+			"OffsetModuleName": "0x33",
+			"TimeDateStamp": "0x4A5BDADB",
 			"forwarders": null
-		}, 
+		},
 		{
-			"NumberOfModuleForwarderRefs": "1", 
-			"OffsetModuleName": "0x3D", 
-			"TimeDateStamp": "0x4A5BDAAD", 
+			"NumberOfModuleForwarderRefs": "1",
+			"OffsetModuleName": "0x3D",
+			"TimeDateStamp": "0x4A5BDAAD",
 			"forwarders": [
 				{
-					"OffsetModuleName": "0x33", 
-					"Reserved": "0x0", 
+					"OffsetModuleName": "0x33",
+					"Reserved": "0x0",
 					"TimeDateStamp": "0x4A5BDADB"
 				}
 			]
 		}
-	], 
+	],
 	"export-directory-details": [
 		{
-			"name": "KsCreateAllocator", 
-			"offset": "0x793", 
-			"ordinal": "0x1", 
+			"name": "KsCreateAllocator",
+			"offset": "0x793",
+			"ordinal": "0x1",
 			"rva": "0x1393"
-		}, 
+		},
 		{
-			"name": "KsCreateClock", 
-			"offset": "0x80D", 
-			"ordinal": "0x2", 
+			"name": "KsCreateClock",
+			"offset": "0x80D",
+			"ordinal": "0x2",
 			"rva": "0x140D"
-		}, 
+		},
 		{
-			"name": "KsCreatePin", 
-			"offset": "0x585", 
-			"ordinal": "0x3", 
+			"name": "KsCreatePin",
+			"offset": "0x585",
+			"ordinal": "0x3",
 			"rva": "0x1185"
-		}, 
+		},
 		{
-			"name": "KsCreateTopologyNode", 
-			"offset": "0x885", 
-			"ordinal": "0x4", 
+			"name": "KsCreateTopologyNode",
+			"offset": "0x885",
+			"ordinal": "0x4",
 			"rva": "0x1485"
 		}
-	], 
+	],
 	"export-directory-header": {
-		"AddressOfFunctions": "0x110C", 
-		"AddressOfNameOrdinals": "0x112C", 
-		"AddressOfNames": "0x111C", 
-		"Base": "0x1", 
-		"Characteristics": "0x0", 
-		"MajorVersion": "0", 
-		"MinorVersion": "0", 
-		"Name": "0x1134", 
-		"NumberOfFunctions": "4", 
-		"NumberOfNames": "4", 
+		"AddressOfFunctions": "0x110C",
+		"AddressOfNameOrdinals": "0x112C",
+		"AddressOfNames": "0x111C",
+		"Base": "0x1",
+		"Characteristics": "0x0",
+		"MajorVersion": "0",
+		"MinorVersion": "0",
+		"Name": "0x1134",
+		"NumberOfFunctions": "4",
+		"NumberOfNames": "4",
 		"TimeDateStamp": "0x4A5BCB44"
-	}, 
+	},
 	"import-directories-details": [
 		{
 			"elements": [
 				{
-					"hint": "0x4EA", 
-					"name": "memcpy", 
-					"offset": "0x400", 
+					"hint": "0x4EA",
+					"name": "memcpy",
+					"offset": "0x400",
 					"rva": "0x1000"
 				}
-			], 
+			],
 			"name": "msvcrt.dll"
-		}, 
+		},
 		{
 			"elements": [
 				{
-					"hint": "0x413", 
-					"name": "RtlNtStatusToDosError", 
-					"offset": "0x408", 
+					"hint": "0x413",
+					"name": "RtlNtStatusToDosError",
+					"offset": "0x408",
 					"rva": "0x1008"
-				}, 
+				},
 				{
-					"hint": "0xE4", 
-					"name": "NtCreateFile", 
-					"offset": "0x40C", 
+					"hint": "0xE4",
+					"name": "NtCreateFile",
+					"offset": "0x40C",
 					"rva": "0x100C"
 				}
-			], 
+			],
 			"name": "ntdll.dll"
-		}, 
+		},
 		{
 			"elements": [
 				{
-					"hint": "0x2CF", 
-					"name": "HeapFree", 
-					"offset": "0x414", 
+					"hint": "0x2CF",
+					"name": "HeapFree",
+					"offset": "0x414",
 					"rva": "0x1014"
-				}, 
+				},
 				{
-					"hint": "0x24A", 
-					"name": "GetProcessHeap", 
-					"offset": "0x418", 
+					"hint": "0x24A",
+					"name": "GetProcessHeap",
+					"offset": "0x418",
 					"rva": "0x1018"
-				}, 
+				},
 				{
-					"hint": "0x2CB", 
-					"name": "HeapAlloc", 
-					"offset": "0x41C", 
+					"hint": "0x2CB",
+					"name": "HeapAlloc",
+					"offset": "0x41C",
 					"rva": "0x101C"
 				}
-			], 
+			],
 			"name": "KERNEL32.dll"
 		}
-	], 
+	],
 	"import-directory-headers": [
 		{
-			"FirstThunk": "0x1000", 
-			"ForwarderChain": "0xFFFFFFFF", 
-			"Name": "0x1564", 
-			"OriginalFirstThunk": "0x1570", 
+			"FirstThunk": "0x1000",
+			"ForwarderChain": "0xFFFFFFFF",
+			"Name": "0x1564",
+			"OriginalFirstThunk": "0x1570",
 			"TimeDateStamp": "0xFFFFFFFF"
-		}, 
+		},
 		{
-			"FirstThunk": "0x1008", 
-			"ForwarderChain": "0xFFFFFFFF", 
-			"Name": "0x1558", 
-			"OriginalFirstThunk": "0x1578", 
+			"FirstThunk": "0x1008",
+			"ForwarderChain": "0xFFFFFFFF",
+			"Name": "0x1558",
+			"OriginalFirstThunk": "0x1578",
 			"TimeDateStamp": "0xFFFFFFFF"
-		}, 
+		},
 		{
-			"FirstThunk": "0x1014", 
-			"ForwarderChain": "0xFFFFFFFF", 
-			"Name": "0x1548", 
-			"OriginalFirstThunk": "0x1584", 
+			"FirstThunk": "0x1014",
+			"ForwarderChain": "0xFFFFFFFF",
+			"Name": "0x1548",
+			"OriginalFirstThunk": "0x1584",
 			"TimeDateStamp": "0xFFFFFFFF"
 		}
-	], 
+	],
 	"nt-sections": [
 		{
-			"Characteristics": "0x60000020", 
-			"Name": ".text", 
-			"NumberOfLinenumbers": "0", 
-			"NumberOfRelocations": "0", 
-			"PointerToLinenumbers": "0x0", 
-			"PointerToRawData": "0x400", 
-			"PointerToRelocations": "0x0", 
-			"SizeOfRawData": "0x800", 
-			"VirtualAddress": "0x1000", 
+			"Characteristics": "0x60000020",
+			"Name": ".text",
+			"NumberOfLinenumbers": "0",
+			"NumberOfRelocations": "0",
+			"PointerToLinenumbers": "0x0",
+			"PointerToRawData": "0x400",
+			"PointerToRelocations": "0x0",
+			"SizeOfRawData": "0x800",
+			"VirtualAddress": "0x1000",
 			"VirtualSize": "0x64F"
-		}, 
+		},
 		{
-			"Characteristics": "0x40000040", 
-			"Name": ".rsrc", 
-			"NumberOfLinenumbers": "0", 
-			"NumberOfRelocations": "0", 
-			"PointerToLinenumbers": "0x0", 
-			"PointerToRawData": "0xC00", 
-			"PointerToRelocations": "0x0", 
-			"SizeOfRawData": "0x400", 
-			"VirtualAddress": "0x2000", 
+			"Characteristics": "0x40000040",
+			"Name": ".rsrc",
+			"NumberOfLinenumbers": "0",
+			"NumberOfRelocations": "0",
+			"PointerToLinenumbers": "0x0",
+			"PointerToRawData": "0xC00",
+			"PointerToRelocations": "0x0",
+			"SizeOfRawData": "0x400",
+			"VirtualAddress": "0x2000",
 			"VirtualSize": "0x3E8"
-		}, 
+		},
 		{
-			"Characteristics": "0x42000040", 
-			"Name": ".reloc", 
-			"NumberOfLinenumbers": "0", 
-			"NumberOfRelocations": "0", 
-			"PointerToLinenumbers": "0x0", 
-			"PointerToRawData": "0x1000", 
-			"PointerToRelocations": "0x0", 
-			"SizeOfRawData": "0x200", 
-			"VirtualAddress": "0x3000", 
+			"Characteristics": "0x42000040",
+			"Name": ".reloc",
+			"NumberOfLinenumbers": "0",
+			"NumberOfRelocations": "0",
+			"PointerToLinenumbers": "0x0",
+			"PointerToRawData": "0x1000",
+			"PointerToRelocations": "0x0",
+			"SizeOfRawData": "0x200",
+			"VirtualAddress": "0x3000",
 			"VirtualSize": "0x20"
 		}
-	], 
+	],
 	"nt-sections-details": [
 		{
-			"Characteristics": "code,executable,readable", 
-			"Name": ".text", 
-			"entropy": "4.904", 
-			"real-file-offset": "0x400", 
+			"Characteristics": "code,executable,readable",
+			"Name": ".text",
+			"entropy": "4.904",
+			"real-file-offset": "0x400",
 			"real-size": "0x800"
-		}, 
+		},
 		{
-			"Characteristics": "initialized,readable", 
-			"Name": ".rsrc", 
-			"entropy": "3.344", 
-			"real-file-offset": "0xC00", 
+			"Characteristics": "initialized,readable",
+			"Name": ".rsrc",
+			"entropy": "3.344",
+			"real-file-offset": "0xC00",
 			"real-size": "0x400"
-		}, 
+		},
 		{
-			"Characteristics": "initialized,can be discarded,readable", 
-			"Name": ".reloc", 
-			"entropy": "0.450", 
-			"real-file-offset": "0x1000", 
+			"Characteristics": "initialized,can be discarded,readable",
+			"Name": ".reloc",
+			"entropy": "0.450",
+			"real-file-offset": "0x1000",
 			"real-size": "0x200"
 		}
-	], 
+	],
 	"relocation-headers": [
 		{
-			"SizeOfBlock": "0x20", 
-			"VirtualAddress": "0x1000", 
+			"SizeOfBlock": "0x20",
+			"VirtualAddress": "0x1000",
 			"relocations-count": "0xC"
 		}
-	], 
+	],
 	"relocations-details": [
 		{
-			"offset": "0x4DE", 
-			"rva": "0x10DE", 
+			"offset": "0x4DE",
+			"rva": "0x10DE",
 			"type": "3"
-		}, 
+		},
 		{
-			"offset": "0x5A6", 
-			"rva": "0x11A6", 
+			"offset": "0x5A6",
+			"rva": "0x11A6",
 			"type": "3"
-		}, 
+		},
 		{
-			"offset": "0x67B", 
-			"rva": "0x127B", 
+			"offset": "0x67B",
+			"rva": "0x127B",
 			"type": "3"
-		}, 
+		},
 		{
-			"offset": "0x682", 
-			"rva": "0x1282", 
+			"offset": "0x682",
+			"rva": "0x1282",
 			"type": "3"
-		}, 
+		},
 		{
-			"offset": "0x704", 
-			"rva": "0x1304", 
+			"offset": "0x704",
+			"rva": "0x1304",
 			"type": "3"
-		}, 
+		},
 		{
-			"offset": "0x70E", 
-			"rva": "0x130E", 
+			"offset": "0x70E",
+			"rva": "0x130E",
 			"type": "3"
-		}, 
+		},
 		{
-			"offset": "0x715", 
-			"rva": "0x1315", 
+			"offset": "0x715",
+			"rva": "0x1315",
 			"type": "3"
-		}, 
+		},
 		{
-			"offset": "0x779", 
-			"rva": "0x1379", 
+			"offset": "0x779",
+			"rva": "0x1379",
 			"type": "3"
-		}, 
+		},
 		{
-			"offset": "0x7A6", 
-			"rva": "0x13A6", 
+			"offset": "0x7A6",
+			"rva": "0x13A6",
 			"type": "3"
-		}, 
+		},
 		{
-			"offset": "0x820", 
-			"rva": "0x1420", 
+			"offset": "0x820",
+			"rva": "0x1420",
 			"type": "3"
-		}, 
+		},
 		{
-			"offset": "0x896", 
-			"rva": "0x1496", 
+			"offset": "0x896",
+			"rva": "0x1496",
 			"type": "3"
-		}, 
+		},
 		{
-			"offset": "0x400", 
-			"rva": "0x1000", 
+			"offset": "0x400",
+			"rva": "0x1000",
 			"type": "0"
 		}
 	]

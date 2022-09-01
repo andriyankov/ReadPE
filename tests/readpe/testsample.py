@@ -94,6 +94,7 @@ class TestSample:
 
     def create(self):
         self.__call_readpe()
+        self.__sort_stdout()
         self.__descriptor['stdout-md5'] = _md5_of_text(self.__descriptor['stdout-content'])
         self.__descriptor['stderr-md5'] = _md5_of_text(self.__descriptor['stderr-content'])
 
@@ -105,6 +106,5 @@ class TestSample:
         return result
 
     def save_to_dir(self, directory):
-        self.__sort_stdout()
         self.__save_stdstream(directory, 'stdout')
         self.__save_stdstream(directory, 'stderr')
