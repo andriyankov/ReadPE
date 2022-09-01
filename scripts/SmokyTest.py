@@ -130,14 +130,14 @@ class TestReportChecker:
         srcFilename = os.path.join(self.__args['testSamplesDir'], expectedDescriptor['source-filename'])
         self.__check_source(srcFilename, expectedDescriptor['source-md5'])
         actualSample = TestSample(srcFilename, self.__args['testToolPath'], self.__report.cmdline())
-        actualSample.prepare()
+        actualSample.create()
         try:
-            self.__check_results(actualSample.get_descriptor(), expectedDescriptor)
+            self.__check_results(actualSample.descriptor, expectedDescriptor)
         except SampleException:
             if self.__args['errorsDir']:
-                actualSample.write_results(self.__args['errorsDir'])
+                actualSample.save_to_dir(self.__args['errorsDir'])
             raise
-        self.__check_retcodes(actualSample.get_descriptor(), expectedDescriptor)
+        self.__check_retcodes(actualSample.descriptor, expectedDescriptor)
 
     def execute(self):
         errorsCount = 0

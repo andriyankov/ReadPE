@@ -17,14 +17,9 @@ class TestSampleException(Exception):
         return self.__err_text
 
 
-def _new_filename(directory, filename, extension):
+def _generate_filename(directory, filename, extension):
     name = os.path.basename(filename).split(os.extsep)[0] + '.' + extension
     return os.path.join(directory, name)
-
-
-def _write_to_file(filename, content):
-    with open(filename, 'wb') as file_:
-        file_.write(content.encode())
 
 
 def _md5_of_file(filename):
@@ -37,12 +32,12 @@ def _md5_of_file(filename):
     return md5.hexdigest().upper()
 
 
-def _md5_of_text(strContent):
+def _md5_of_text(str):
     result = 'None'
-    if strContent:
-        contentBin = strContent.encode(encoding='ascii')
+    if str:
+        bin = str.encode(encoding='ascii')
         md5 = hashlib.md5()
-        md5.update(contentBin)
+        md5.update(bin)
         result = md5.hexdigest().upper()
     return result
 
@@ -80,35 +75,36 @@ class TestSample:
             s = 'Error: %s "%s"' % (str(e), filename)
             raise TestSampleException(s)
 
+    def __save_stdstream(self, directory, streamname):
+        if directory and os.path.exists(directory):
+            filename = _generate_filename(
+                directory, self.__descriptor['source-filename'], streamname)
+            content = self.__descriptor[f'{streamname}-content']
+            with open(filename, 'wb') as file_:
+                file_.write(content.encode())
+
     def __sort_stdout(self):
-        result = self.__descriptor['stdout-content']
         try:
-            if self.__descriptor['stdout-content']:
-                parsed = json.loads(self.__descriptor['stdout-content'])
-                result = json.dumps(parsed, indent='\t', sort_keys=True)
+            result = self.__descriptor['stdout-content']
+            parsed = json.loads(result)
+            result = json.dumps(parsed, indent='\t', sort_keys=True)
+            self.__descriptor['stdout-content'] = result
         except ValueError:
             pass
-        return result
 
-    def prepare(self):
+    def create(self):
         self.__call_readpe()
         self.__descriptor['stdout-md5'] = _md5_of_text(self.__descriptor['stdout-content'])
         self.__descriptor['stderr-md5'] = _md5_of_text(self.__descriptor['stderr-content'])
 
-    def get_descriptor(self):
+    @property
+    def descriptor(self):
         result = self.__descriptor.copy()
         del(result['stdout-content'])
         del(result['stderr-content'])
         return result
 
-    def write_result(self, directory, param):
-        if directory and os.path.exists(directory):
-            filename = _new_filename(
-                directory, self.__descriptor['source-filename'], param)
-            content = self.__sort_stdout() if param == 'stdout' else \
-                self.__descriptor['stderr-content']
-            _write_to_file(filename, content)
-
-    def write_results(self, directory):
-        self.write_result(directory, 'stdout')
-        self.write_result(directory, 'stderr')
+    def save_to_dir(self, directory):
+        self.__sort_stdout()
+        self.__save_stdstream(directory, 'stdout')
+        self.__save_stdstream(directory, 'stderr')
