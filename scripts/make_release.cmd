@@ -52,7 +52,8 @@ set ReleaseDir=.\\release
 	copy %DocsDir%\\ru_ChangeLog.txt %ReleaseDir%\\
 	copy %PyPackageDir%\\dist\\readpe*.zip %ReleaseDir%\\
 
-	call md5sum %ReleaseDir%\\ 1> %ReleaseDir%\\Checksum.txt
+	call md5sum %ReleaseDir%\\
+	move index.md5 %ReleaseDir%
 
 	call %SevenZipTool% a %ArchiveName% -mhe %ReleaseDir%\\*.*
 
