@@ -14,6 +14,7 @@
 import sys
 import os
 import traceback
+import csv
 from datetime import datetime, timedelta
 from readpe.readpe import call_readpe_tool, ReadpeException, ScriptException
 
@@ -29,7 +30,7 @@ def get_executables_from_directory(directory, recursive=False):
     @param recursive: None or True, if True handle directory recursive
     @return: flat list of files inside directory according to recursive flag
     """
-    for dirPath, subDirs, files in os.walk(directory, True):  # os.walk() don't walk to symbolic links to subdirectories
+    for dirPath, _, files in os.walk(directory, True):  # os.walk() don't walk to symbolic links to subdirectories
         for filename in files:
             if is_executable(filename):
                 yield(os.path.join(dirPath, filename))
@@ -37,16 +38,14 @@ def get_executables_from_directory(directory, recursive=False):
             break
 
 
-def call_readpe(apppath, filename):
+def call_readpe(apppath, testfile):
     start = datetime.now()
     try:
-        call_readpe_tool(filename, apppath)
+        call_readpe_tool(testfile, apppath)
     except ReadpeException as e:
-        s = 'Error: %d "%s", ' % (e.error_code(), filename)
-        print(s, file=sys.stderr)
+        print(f'{e.error_code} "{testfile}"', file=sys.stderr)
     except ScriptException as e:
-        s = 'Error: %s "%s", ' % (str(e), filename)
-        print(s, file=sys.stderr)
+        print(f'{str(e)} "{testfile}"', file=sys.stderr)
         return None
     finish = datetime.now()
     return finish - start
@@ -54,55 +53,47 @@ def call_readpe(apppath, filename):
 
 def make_performance_report(apppath, directory):
     result = dict()
-    executables = get_executables_from_directory(directory, True)
+    testfiles = get_executables_from_directory(directory, True)
     TIMEDELTA_NULL = timedelta(0)
-    for executable in executables:
-        timedelta_ = call_readpe(apppath, executable)
+    for testfile in testfiles:
+        timedelta_ = call_readpe(apppath, testfile)
         if timedelta_ and TIMEDELTA_NULL != timedelta_:
-            result[executable] = timedelta_
+            result[testfile] = timedelta_
     return result
 
 
-def print_csv_title(delim=';'):
-    s = 'Time' + delim + 'File'
-    print(s)
+def save_report_to_csv(report, filename='report.csv'):
+    with open(filename, 'w', newline='') as f:
+        fieldnames = ('filename', 'time')
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for item in report:
+            writer.writerow({'filename': item[0], 'time': item[1]})
 
 
-def print_csv_line(reportItem, delim=';'):
-    print(str(reportItem[1]) + delim + reportItem[0])
-
-
-def print_performance_report(report, delim=';'):
-    def sort_report():
-        unsorted = list(report.items())
-        return sorted(unsorted, key=lambda sortItem: sortItem[1], reverse=True)
-    if report:
-        print_csv_title(delim)
-        for item in sort_report():
-            print_csv_line(item, delim)
+def sort_performance_report(report):
+    unsorted = list(report.items())
+    return sorted(unsorted, key=lambda item: item[1], reverse=True)
 
 
 def parse_cmdline(argv=None):
-    result = dict()
-    if argv:
-        sys.argv = argv
-    directory = sys.argv[2]
-    if os.path.isdir(directory) and os.path.exists(directory):
-        result['apppath'] = sys.argv[1]
-        result['directory'] = directory
-    return result
+    if not argv:
+        argv = sys.argv
+    apppath = argv[1]
+    directory = argv[2]
+    return (apppath, directory)
 
 
 def main(argv=None):
-    result = 0
     try:
-        args = parse_cmdline(argv)
-        report = make_performance_report(args['apppath'], args['directory'])
-        print_performance_report(report)
+        apppath, directory = parse_cmdline(argv)
+        report = make_performance_report(apppath, directory)
+        report = sort_performance_report(report)
+        save_report_to_csv(report)
     except BaseException:
         print(traceback.format_exc(), file=sys.stderr)
-        result = -1
-    return result
+        return -1
+    return 0
 
 
 if __name__ == '__main__':
