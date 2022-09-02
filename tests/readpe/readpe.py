@@ -1,9 +1,7 @@
-
-
 import os
 import sys
 import re
-from subprocess import Popen, PIPE
+from subprocess import run, PIPE
 from enum import IntEnum, unique
 
 
@@ -83,12 +81,9 @@ class ReadPE:
             raise ScriptException('STDERR is empty')
 
     def __run_process(self, args):
-        proc = Popen(args, stdout=PIPE, stderr=PIPE)
-        stdout_bin = proc.stdout.read()
-        stderr_bin = proc.stderr.read()
-        proc.stdout.close()
-        proc.stderr.close()
-        proc.wait()
+        proc = run(args, stdout=PIPE, stderr=PIPE)
+        stdout_bin = proc.stdout
+        stderr_bin = proc.stderr
         self.__app_result['retcode'] = proc.returncode
         self.__app_result['stdout'] = stdout_bin.decode('ascii')
         self.__app_result['stderr'] = stderr_bin.decode('ascii')
