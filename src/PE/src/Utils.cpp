@@ -108,14 +108,16 @@ uint16_t RvaToSectionIndex(const Image<Arch>& image, uint32_t rva)
         const auto& optHeader = image.getNtHeaders().OptionalHeader;
         Aligner aligner(optHeader.FileAlignment, optHeader.SectionAlignment);
 
-        for (const auto& sectionHeader : image.getSectionHeaders()) {
+        for (uint16_t i = 0; i < sectionsCount; i++) {
+            const auto& sectionHeader = image.getSectionHeaders()[i];
+
             uint32_t VA = aligner.getVirtualAddress(sectionHeader.VirtualAddress);
             uint32_t sectionSize = aligner.getSectionSize(sectionHeader);
 
-            if (rva >= VA && rva < VA + sectionSize)
+            if (rva >= VA && rva < VA + sectionSize) {
+                resultIndex = i;
                 break;
-            else
-                resultIndex++;
+            }
         } // for
     }
     return resultIndex < sectionsCount ? resultIndex : INVALID_SECTION_INDEX;
