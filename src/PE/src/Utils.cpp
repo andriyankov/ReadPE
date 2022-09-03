@@ -134,12 +134,15 @@ uint16_t RawToSectionIndex(const Image<Arch>& image, uint32_t raw)
 
         for (uint16_t i = 0; i < sectionsCount; i++) {
             const auto& sectionHeader = image.getSectionHeaders()[i];
+
             if (sectionHeader.PointerToRawData > 0) {
                 uint32_t FO = aligner.getFileOffset(sectionHeader.PointerToRawData);
                 uint32_t sectionSize = aligner.getSectionSize(sectionHeader);
 
-                if (raw >= FO && raw < FO + sectionSize)
+                if (raw >= FO && raw < FO + sectionSize) {
                     resultIndex = i;
+                    break;
+                }
             }
         } // for
     }
