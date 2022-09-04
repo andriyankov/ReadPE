@@ -15,6 +15,17 @@ Features
 * etc. See to ```readpe --help```
 
 
+Exit codes
+==========
+
+0 - Success
+1 - The platform type is not supported
+2 - This file is not PE32/PE32+ 
+3 - The file is currupted
+4 - Usage errors 
+5 - Errors occurs during in runtime
+
+
 Examples
 ========
 
