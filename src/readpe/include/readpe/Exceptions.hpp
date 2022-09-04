@@ -19,23 +19,12 @@ private:
 };
 
 
-class ConfigureException final
+class UnsupportedException final
     : public ReadpeException
 {
 public:
-    ConfigureException(const std::string& s)
-        : ReadpeException(s.c_str(), ErrorCode::Configure)
-    {
-    }
-};
-
-
-class CorruptedException final
-    : public ReadpeException
-{
-public:
-    CorruptedException(const std::string& s)
-        : ReadpeException(s.c_str(), ErrorCode::Corrupted)
+    UnsupportedException(const std::string& s)
+        : ReadpeException(s.c_str(), ErrorCode::Unsupported)
     {
     }
 };
@@ -52,34 +41,34 @@ public:
 };
 
 
-class UnsupportedException final
+class CorruptedException final
     : public ReadpeException
 {
 public:
-    UnsupportedException(const std::string& s)
-        : ReadpeException(s.c_str(), ErrorCode::Unsupported)
+    CorruptedException(const std::string& s)
+        : ReadpeException(s.c_str(), ErrorCode::Corrupted)
     {
     }
 };
 
 
-class SystemException final
+class ConfigureException final
     : public ReadpeException
 {
 public:
-    SystemException(const std::string& s)
-        : ReadpeException(s.c_str(), ErrorCode::System)
+    ConfigureException(const std::string& s)
+        : ReadpeException(s.c_str(), ErrorCode::Configure)
     {
     }
 };
 
 
-class NotImplementedException final
+class InternalException final
     : public ReadpeException
 {
 public:
-    NotImplementedException(const std::string& s)
-        : ReadpeException(s.c_str(), ErrorCode::NotImplemented)
+    InternalException(const std::string& s)
+        : ReadpeException(s.c_str(), ErrorCode::Internal)
     {
     }
 };

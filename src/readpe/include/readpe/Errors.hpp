@@ -6,11 +6,8 @@ enum class ErrorCode
 /*01*/  Unsupported,
 /*02*/  Format,
 /*03*/  Corrupted,
-/*04*/  StdLibrary,
-/*05*/  System,
-/*06*/  Unhandled,
-/*07*/  NotImplemented,
-/*08*/  Configure,
+/*04*/  Configure,
+/*05*/  Internal,
 
     Unknown
 };

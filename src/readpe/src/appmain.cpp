@@ -15,7 +15,7 @@ void writeToLog(const std::string& errName, const std::string& errText)
 
 void appTerminatedHandler()
 {
-    exit(static_cast<int>(readpe::ErrorCode::Unhandled));
+    exit(static_cast<int>(readpe::ErrorCode::Internal));
 }
 
 void appUnexpectedExceptionHandler()
@@ -43,8 +43,8 @@ int main(int argc, char* argv[])
         exitCode = e.error_code();
     }
     catch (const std::exception& e) {
-        writeToLog("Std Library error", e.what());
-        exitCode = ErrorCode::StdLibrary;
+        writeToLog("Runtime error", e.what());
+        exitCode = ErrorCode::Internal;
     }
     return static_cast<int>(exitCode);
 }

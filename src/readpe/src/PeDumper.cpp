@@ -43,7 +43,7 @@ void dump(const ProgramOptions& programOptions)
         Fw::Io::StreamUtils::prepare(fileStream);
     }
     catch (const runtime_error&) {
-        throw SystemException("Cannot open file");
+        throw ConfigureException("Cannot open file");
     }
 
     Platform platform = detectPlatform(fileStream);
