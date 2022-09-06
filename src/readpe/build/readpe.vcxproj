@@ -149,10 +149,10 @@
       <Message>Update the Application version info</Message>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>c:\\python310\\python.exe -u $(SolutionDir)\\..\\scripts\\SmokyTest.py $(TargetPath) $(SolutionDir)\\..\\tests\\test-data\\expected-results\\smoky\\report.txt $(SolutionDir)\\..\\tests\\test-data\\test-samples\\smoky\\ $(OutDir)</Command>
+      <Command>cd $(SolutionDir)\\..\\tests\\ &amp;&amp; poetry run pytest --test-app-path=$(OutFile)</Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Message>Smoky Testing</Message>
+      <Message>Smoke Testing</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -180,10 +180,10 @@
       <Message>Update the Application version info</Message>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>c:\\python310\\python.exe -u $(SolutionDir)\\..\\scripts\\SmokyTest.py $(TargetPath) $(SolutionDir)\\..\\tests\\test-data\\expected-results\\smoky\\report.txt $(SolutionDir)\\..\\tests\\test-data\\test-samples\\smoky\\ $(OutDir)</Command>
+      <Command>cd $(SolutionDir)\\..\\tests\\ &amp;&amp; poetry run pytest --test-app-path=$(OutFile)</Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Message>Smoky Testing</Message>
+      <Message>Smoke Testing</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
