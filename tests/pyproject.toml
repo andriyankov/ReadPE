@@ -15,4 +15,4 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
-addopts = "--test-samples-dir=./test-data/test-samples/smoky/ --test-reports-dir=./test-data/expected-results/smoky/"
+addopts = "--test-samples-dir=./test-data/test-samples/smoke/ --test-reports-dir=./test-data/expected-results/smoke/"

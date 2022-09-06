@@ -1,0 +1,2 @@
+File : ./test-data/test-samples/smoke/pe/Incomplete_SectionHeaders64.bin
+Application Error : Cannot read NT Sections Headers area
