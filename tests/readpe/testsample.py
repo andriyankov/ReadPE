@@ -4,6 +4,8 @@ import json
 import hashlib
 
 from . import readpe
+from .utils import md5_of_file
+
 
 __all__ = ['TestSampleException', 'TestSample']
 
@@ -22,16 +24,6 @@ def _generate_filename(directory, filename, extension):
     return os.path.join(directory, name)
 
 
-def _md5_of_file(filename):
-    md5 = hashlib.md5()
-    with open(filename, 'rb') as f:
-        for chunk in iter(lambda: f.read(md5.block_size * 128), ''):
-            if not chunk:
-                break
-            md5.update(chunk)
-    return md5.hexdigest().upper()
-
-
 def _md5_of_text(str):
     result = 'None'
     if str:
@@ -48,7 +40,7 @@ class TestSample:
         self.__cmdline_args = cmdline_args
         self.__descriptor = dict()
         self.__descriptor['source-filename'] = filename
-        self.__descriptor['source-md5'] = _md5_of_file(filename)
+        self.__descriptor['source-md5'] = md5_of_file(filename)
         self.__clean_results()
 
     def __clean_results(self):
