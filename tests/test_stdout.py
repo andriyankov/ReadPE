@@ -14,8 +14,18 @@ def expected_stdout_md5(request):
 
 @pytest.mark.parametrize(
   'filename',
-  [ ('pe/correct32.bin'),
-    ('pe/correct64.bin')
+  [ ('pe/Correct32.bin'),
+    ('pe/Correct64.bin'),
+    ('pe/ExportedForwardOne32.bin'),
+    ('pe/ExportedByOrdinals32.bin'),
+    ('pe/ExportedSomeForwards32.bin'),
+    ('pe/NtHeaders32_With22Sections.bin'),
+    ('pe/OrdinalBase_is_5_img32.bin'),
+    ('pe/TlsCallback.bin'),
+    ('pe/SectionAndFileAlignments_are_identical.bin'),
+    ('pe/boundHeaderOne.bin'),
+    ('pe/exportElementsCountIsZero32.bin'),
+    ('pe/mz_pe_combined32_00.bin')
   ]
 )
 def test_stdout(readpe_stdout_md5, expected_stdout_md5, filename):

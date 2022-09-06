@@ -1,0 +1,355 @@
+{
+	"Dos-Header": {
+		"e_cblp": "0x90",
+		"e_cp": "0x3",
+		"e_cparhdr": "0x4",
+		"e_crlc": "0x0",
+		"e_cs": "0x0",
+		"e_csum": "0x0",
+		"e_ip": "0x0",
+		"e_lfanew": "0xE8",
+		"e_lfarlc": "0x40",
+		"e_magic": "0x5A4D",
+		"e_maxalloc": "0xFFFF",
+		"e_minalloc": "0x0",
+		"e_oemid": "0x0",
+		"e_oeminfo": "0x0",
+		"e_ovno": "0x0",
+		"e_res": [
+			"0x0",
+			"0x0",
+			"0x0",
+			"0x0"
+		],
+		"e_res2": [
+			"0x0",
+			"0x0",
+			"0x0",
+			"0x0",
+			"0x0",
+			"0x0",
+			"0x0",
+			"0x0",
+			"0x0",
+			"0x0"
+		],
+		"e_sp": "0xB8",
+		"e_ss": "0x0"
+	},
+	"NT-Headers": {
+		"FileHeader": {
+			"Characteristics": "0x2022",
+			"Machine": "0x8664",
+			"NumberOfSections": "4",
+			"NumberOfSymbols": "0",
+			"PointerToSymbolTable": "0x0",
+			"SizeOfOptionalHeader": "0xF0",
+			"TimeDateStamp": "0x4D49E2F1"
+		},
+		"OptionalHeader": {
+			"AddressOfEntryPoint": "0x0",
+			"BaseOfCode": "0x1000",
+			"CheckSum": "0x81D2",
+			"DataDirectory": [
+				{
+					"Size": "0x9A",
+					"VirtualAddress": "0x1DC0"
+				},
+				{
+					"Size": "0x3C",
+					"VirtualAddress": "0x1C78"
+				},
+				{
+					"Size": "0x3E8",
+					"VirtualAddress": "0x4000"
+				},
+				{
+					"Size": "0xC0",
+					"VirtualAddress": "0x3000"
+				},
+				{
+					"Size": "0x0",
+					"VirtualAddress": "0x0"
+				},
+				{
+					"Size": "0x0",
+					"VirtualAddress": "0x0"
+				},
+				{
+					"Size": "0x0",
+					"VirtualAddress": "0x0"
+				},
+				{
+					"Size": "0x0",
+					"VirtualAddress": "0x0"
+				},
+				{
+					"Size": "0x0",
+					"VirtualAddress": "0x0"
+				},
+				{
+					"Size": "0x0",
+					"VirtualAddress": "0x0"
+				},
+				{
+					"Size": "0x0",
+					"VirtualAddress": "0x0"
+				},
+				{
+					"Size": "0x0",
+					"VirtualAddress": "0x0"
+				},
+				{
+					"Size": "0x60",
+					"VirtualAddress": "0x1000"
+				},
+				{
+					"Size": "0x0",
+					"VirtualAddress": "0x0"
+				},
+				{
+					"Size": "0x0",
+					"VirtualAddress": "0x0"
+				},
+				{
+					"Size": "0x0",
+					"VirtualAddress": "0x0"
+				}
+			],
+			"DllCharacteristics": "0x140",
+			"FileAlignment": "0x200",
+			"ImageBase": "0x180000000",
+			"LoaderFlags": "0x0",
+			"Magic": "0x20B",
+			"MajorImageVersion": "0",
+			"MajorLinkerVersion": "10",
+			"MajorOperatingSystemVersion": "5",
+			"MajorSubsystemVersion": "5",
+			"MinorImageVersion": "0",
+			"MinorLinkerVersion": "0",
+			"MinorOperatingSystemVersion": "2",
+			"MinorSubsystemVersion": "2",
+			"NumberOfRvaAndSizes": "16",
+			"SectionAlignment": "0x1000",
+			"SizeOfCode": "0x1000",
+			"SizeOfHeaders": "0x400",
+			"SizeOfHeapCommit": "0x1000",
+			"SizeOfHeapReserve": "0x100000",
+			"SizeOfImage": "0x5000",
+			"SizeOfInitializedData": "0xC00",
+			"SizeOfStackCommit": "0x1000",
+			"SizeOfStackReserve": "0x100000",
+			"SizeOfUninitializedData": "0x0",
+			"Subsystem": "0x2",
+			"Win32VersionValue": "0"
+		},
+		"Signature": "0x4550"
+	},
+	"export-directory-details": [
+		{
+			"name": "GetMinFarVersionW",
+			"offset": "0x5DC",
+			"ordinal": "0x1",
+			"rva": "0x11DC"
+		},
+		{
+			"name": "GetPluginInfoW",
+			"offset": "0x8A4",
+			"ordinal": "0x2",
+			"rva": "0x14A4"
+		},
+		{
+			"name": "OpenPluginW",
+			"offset": "0xBE0",
+			"ordinal": "0x3",
+			"rva": "0x17E0"
+		},
+		{
+			"name": "SetStartupInfoW",
+			"offset": "0x7A8",
+			"ordinal": "0x4",
+			"rva": "0x13A8"
+		}
+	],
+	"export-directory-header": {
+		"AddressOfFunctions": "0x1DE8",
+		"AddressOfNameOrdinals": "0x1E08",
+		"AddressOfNames": "0x1DF8",
+		"Base": "0x1",
+		"Characteristics": "0x0",
+		"MajorVersion": "0",
+		"MinorVersion": "0",
+		"Name": "0x1E10",
+		"NumberOfFunctions": "4",
+		"NumberOfNames": "4",
+		"TimeDateStamp": "0x4D49E2F1"
+	},
+	"import-directories-details": [
+		{
+			"elements": [
+				{
+					"hint": "0x2D7",
+					"name": "HeapFree",
+					"offset": "0x420",
+					"rva": "0x1020"
+				},
+				{
+					"hint": "0x555",
+					"name": "lstrcmpW",
+					"offset": "0x428",
+					"rva": "0x1028"
+				},
+				{
+					"hint": "0x561",
+					"name": "lstrlenW",
+					"offset": "0x430",
+					"rva": "0x1030"
+				},
+				{
+					"hint": "0x55B",
+					"name": "lstrcpyW",
+					"offset": "0x438",
+					"rva": "0x1038"
+				},
+				{
+					"hint": "0x2D3",
+					"name": "HeapAlloc",
+					"offset": "0x440",
+					"rva": "0x1040"
+				},
+				{
+					"hint": "0x251",
+					"name": "GetProcessHeap",
+					"offset": "0x448",
+					"rva": "0x1048"
+				},
+				{
+					"hint": "0x552",
+					"name": "lstrcatW",
+					"offset": "0x450",
+					"rva": "0x1050"
+				}
+			],
+			"name": "KERNEL32.dll"
+		},
+		{
+			"elements": [
+				{
+					"hint": "0x230",
+					"name": "RegCloseKey",
+					"offset": "0x400",
+					"rva": "0x1000"
+				},
+				{
+					"hint": "0x261",
+					"name": "RegOpenKeyExW",
+					"offset": "0x408",
+					"rva": "0x1008"
+				},
+				{
+					"hint": "0x26E",
+					"name": "RegQueryValueExW",
+					"offset": "0x410",
+					"rva": "0x1010"
+				}
+			],
+			"name": "ADVAPI32.dll"
+		}
+	],
+	"import-directory-headers": [
+		{
+			"FirstThunk": "0x1020",
+			"ForwarderChain": "0x0",
+			"Name": "0x1D72",
+			"OriginalFirstThunk": "0x1CD8",
+			"TimeDateStamp": "0x0"
+		},
+		{
+			"FirstThunk": "0x1000",
+			"ForwarderChain": "0x0",
+			"Name": "0x1DB2",
+			"OriginalFirstThunk": "0x1CB8",
+			"TimeDateStamp": "0x0"
+		}
+	],
+	"nt-sections": [
+		{
+			"Characteristics": "0x60000020",
+			"Name": ".text",
+			"NumberOfLinenumbers": "0",
+			"NumberOfRelocations": "0",
+			"PointerToLinenumbers": "0x0",
+			"PointerToRawData": "0x400",
+			"PointerToRelocations": "0x0",
+			"SizeOfRawData": "0x1000",
+			"VirtualAddress": "0x1000",
+			"VirtualSize": "0xE5A"
+		},
+		{
+			"Characteristics": "0xC0000040",
+			"Name": ".data",
+			"NumberOfLinenumbers": "0",
+			"NumberOfRelocations": "0",
+			"PointerToLinenumbers": "0x0",
+			"PointerToRawData": "0x0",
+			"PointerToRelocations": "0x0",
+			"SizeOfRawData": "0x0",
+			"VirtualAddress": "0x2000",
+			"VirtualSize": "0x420"
+		},
+		{
+			"Characteristics": "0x40000040",
+			"Name": ".pdata",
+			"NumberOfLinenumbers": "0",
+			"NumberOfRelocations": "0",
+			"PointerToLinenumbers": "0x0",
+			"PointerToRawData": "0x1400",
+			"PointerToRelocations": "0x0",
+			"SizeOfRawData": "0x200",
+			"VirtualAddress": "0x3000",
+			"VirtualSize": "0xC0"
+		},
+		{
+			"Characteristics": "0x40000040",
+			"Name": ".rsrc",
+			"NumberOfLinenumbers": "0",
+			"NumberOfRelocations": "0",
+			"PointerToLinenumbers": "0x0",
+			"PointerToRawData": "0x1600",
+			"PointerToRelocations": "0x0",
+			"SizeOfRawData": "0x400",
+			"VirtualAddress": "0x4000",
+			"VirtualSize": "0x3E8"
+		}
+	],
+	"nt-sections-details": [
+		{
+			"Characteristics": "code,executable,readable",
+			"Name": ".text",
+			"entropy": "5.766",
+			"real-file-offset": "0x400",
+			"real-size": "0x1000"
+		},
+		{
+			"Characteristics": "initialized,readable,writeable",
+			"Name": ".data",
+			"entropy": "0.000",
+			"real-file-offset": "0x0",
+			"real-size": "0x0"
+		},
+		{
+			"Characteristics": "initialized,readable",
+			"Name": ".pdata",
+			"entropy": "1.579",
+			"real-file-offset": "0x1400",
+			"real-size": "0x200"
+		},
+		{
+			"Characteristics": "initialized,readable",
+			"Name": ".rsrc",
+			"entropy": "3.239",
+			"real-file-offset": "0x1600",
+			"real-size": "0x400"
+		}
+	]
+}

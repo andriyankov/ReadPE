@@ -1,0 +1,213 @@
+{
+	"Dos-Header" : {
+		"e_magic" : "0x5A4D",
+		"e_cblp" : "0x454B",
+		"e_cp" : "0x4E52",
+		"e_crlc" : "0x4C45",
+		"e_cparhdr" : "0x3233",
+		"e_minalloc" : "0x442E",
+		"e_maxalloc" : "0x4C4C",
+		"e_ss" : "0x0",
+		"e_sp" : "0x4550",
+		"e_csum" : "0x0",
+		"e_ip" : "0x14C",
+		"e_cs" : "0x3",
+		"e_lfarlc" : "0xB0BE",
+		"e_ovno" : "0x4011",
+		"e_res" : [
+			"0xAD00",
+			"0xFF50",
+			"0x3476",
+			"0x7CEB"
+		],
+		"e_oemid" : "0x148",
+		"e_oeminfo" : "0x103",
+		"e_res2" : [
+			"0x10B",
+			"0x6F4C",
+			"0x6461",
+			"0x694C",
+			"0x7262",
+			"0x7261",
+			"0x4179",
+			"0x0",
+			"0x1018",
+			"0x0"
+		],
+		"e_lfanew" : "0x10"
+	},
+	"NT-Headers" : {
+		"Signature" : "0x4550",
+		"FileHeader" : {
+			"Machine" : "0x14C",
+			"NumberOfSections" : "3",
+			"TimeDateStamp" : "0x4011B0BE",
+			"PointerToSymbolTable" : "0xFF50AD00",
+			"NumberOfSymbols" : "2095789174",
+			"SizeOfOptionalHeader" : "0x148",
+			"Characteristics" : "0x103"
+		},
+		"OptionalHeader" : {
+			"Magic" : "0x10B",
+			"MajorLinkerVersion" : "76",
+			"MinorLinkerVersion" : "111",
+			"SizeOfCode" : "0x694C6461",
+			"SizeOfInitializedData" : "0x72617262",
+			"SizeOfUninitializedData" : "0x4179",
+			"AddressOfEntryPoint" : "0x1018",
+			"BaseOfCode" : "0x10",
+			"ImageBase" : "0x400000",
+			"SectionAlignment" : "0x1000",
+			"FileAlignment" : "0x200",
+			"MajorOperatingSystemVersion" : "4",
+			"MinorOperatingSystemVersion" : "0",
+			"MajorImageVersion" : "0",
+			"MinorImageVersion" : "57",
+			"MajorSubsystemVersion" : "4",
+			"MinorSubsystemVersion" : "0",
+			"Win32VersionValue" : "0",
+			"SizeOfImage" : "0x3C000",
+			"SizeOfHeaders" : "0x200",
+			"CheckSum" : "0x0",
+			"Subsystem" : "0x2",
+			"DllCharacteristics" : "0x8000",
+			"SizeOfStackReserve" : "0x100000",
+			"SizeOfStackCommit" : "0x1000",
+			"SizeOfHeapReserve" : "0x100000",
+			"SizeOfHeapCommit" : "0x1000",
+			"LoaderFlags" : "0x0",
+			"NumberOfRvaAndSizes" : "10",
+			"DataDirectory" : [
+				{
+					"VirtualAddress" : "0x0",
+					"Size" : "0x0"
+				},
+				{
+					"VirtualAddress" : "0x3B1EE",
+					"Size" : "0x14"
+				},
+				{
+					"VirtualAddress" : "0x29000",
+					"Size" : "0xFF2"
+				},
+				{
+					"VirtualAddress" : "0xAD3876FF",
+					"Size" : "0xBE3E8B50"
+				},
+				{
+					"VirtualAddress" : "0x43B0F0",
+					"Size" : "0xF359276A"
+				},
+				{
+					"VirtualAddress" : "0x476FFA5",
+					"Size" : "0x8BFFC883"
+				},
+				{
+					"VirtualAddress" : "0x1CEBABDF",
+					"Size" : "0x0"
+				},
+				{
+					"VirtualAddress" : "0x50746547",
+					"Size" : "0x41636F72"
+				},
+				{
+					"VirtualAddress" : "0x65726464",
+					"Size" : "0x7373"
+				},
+				{
+					"VirtualAddress" : "0x0",
+					"Size" : "0x0"
+				}
+			]
+		}
+	},
+	"nt-sections" : [
+		{
+			"Name" : "PS\xff\xd5\xab\xeb\xe7\xc3",
+			"VirtualSize" : "0x28000",
+			"VirtualAddress" : "0x1000",
+			"SizeOfRawData" : "0x1F0",
+			"PointerToRawData" : "0x10",
+			"PointerToRelocations" : "0x429FF2",
+			"PointerToLinenumbers" : "0x43379F",
+			"NumberOfRelocations" : "578",
+			"NumberOfLinenumbers" : "0",
+			"Characteristics" : "0xE0000060"
+		},
+		{
+			"Name" : "\x00\x10@\x00\xd47C",
+			"VirtualSize" : "0x12000",
+			"VirtualAddress" : "0x29000",
+			"SizeOfRawData" : "0xA8FC",
+			"PointerToRawData" : "0x200",
+			"PointerToRelocations" : "0x40A2F0",
+			"PointerToLinenumbers" : "0x427FFF",
+			"NumberOfRelocations" : "14588",
+			"NumberOfLinenumbers" : "67",
+			"Characteristics" : "0xE0000060"
+		},
+		{
+			"Name" : "\x05\x84B\x00\xfc\x0f@",
+			"VirtualSize" : "0x1000",
+			"VirtualAddress" : "0x3B000",
+			"SizeOfRawData" : "0x1F0",
+			"PointerToRawData" : "0x10",
+			"PointerToRelocations" : "0x43376C",
+			"PointerToLinenumbers" : "0x43376F",
+			"NumberOfRelocations" : "14206",
+			"NumberOfLinenumbers" : "67",
+			"Characteristics" : "0xE0000060"
+		}
+	],
+	"import-directory-headers" : [
+		{
+			"OriginalFirstThunk" : "0x0",
+			"TimeDateStamp" : "0x0",
+			"ForwarderChain" : "0x0",
+			"Name" : "0x2",
+			"FirstThunk" : "0x11E8"
+		}
+	],
+	"nt-sections-details" : [
+		{
+			"Name" : "PS\xff\xd5\xab\xeb\xe7\xc3",
+			"real-size" : "0x200",
+			"real-file-offset" : "0x0",
+			"entropy" : "5.404",
+			"Characteristics" : "code,initialized,executable,readable,writeable"
+		},
+		{
+			"Name" : "\x00\x10@\x00\xd47C",
+			"real-size" : "0xAA00",
+			"real-file-offset" : "0x200",
+			"entropy" : "0.000",
+			"Characteristics" : "code,initialized,executable,readable,writeable"
+		},
+		{
+			"Name" : "\x05\x84B\x00\xfc\x0f@",
+			"real-size" : "0x200",
+			"real-file-offset" : "0x0",
+			"entropy" : "5.404",
+			"Characteristics" : "code,initialized,executable,readable,writeable"
+		}
+	],
+	"import-directories-details" : [
+		{
+			"name" : "KERNEL32.DLL",
+			"elements" : [
+				{
+					"rva" : "0x11E8",
+					"offset" : "0x1E8",
+					"name" : "LoadLibraryA",
+					"hint" : "0x10B"
+				},
+				{
+					"rva" : "0x11EC",
+					"offset" : "0x1EC",
+					"name" : "GetProcAddress",
+					"hint" : "0x0"
+				}
+			]
+		}
+	]
+}
