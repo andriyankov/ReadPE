@@ -35,7 +35,7 @@ def _md5_of_text(str):
 
 
 class TestSample:
-    def __init__(self, filename, tool_file='readpe.exe', cmdline_args=''):
+    def __init__(self, filename, tool_file, cmdline_args):
         self.__tool_file = tool_file
         self.__cmdline_args = cmdline_args
         self.__descriptor = dict()
@@ -84,11 +84,14 @@ class TestSample:
         except ValueError:
             pass
 
-    def create(self):
-        self.__call_readpe()
-        self.__sort_stdout()
-        self.__descriptor['stdout-md5'] = _md5_of_text(self.__descriptor['stdout-content'])
-        self.__descriptor['stderr-md5'] = _md5_of_text(self.__descriptor['stderr-content'])
+    @classmethod
+    def create(cls, filename, tool_file='readpe.exe', cmdline_args='--nologo --all'):
+        result = cls(filename, tool_file, cmdline_args)
+        result.__call_readpe()
+        result.__sort_stdout()
+        result.__descriptor['stdout-md5'] = _md5_of_text(result.__descriptor['stdout-content'])
+        result.__descriptor['stderr-md5'] = _md5_of_text(result.__descriptor['stderr-content'])
+        return result
 
     @property
     def descriptor(self):

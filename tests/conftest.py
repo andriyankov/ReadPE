@@ -28,9 +28,7 @@ def readpe_testsample(request):
     testdata = request.config.cache.get(testfile, None)
     if not testdata:
       testfilepath = path.join(request.config.getoption('test_samples_dir'), testfile)
-      args = (testfilepath, request.config.getoption('testapp_path'), '--nologo --all')
-      ts = TestSample(*args)
-      ts.create()
+      ts = TestSample.create(testfilepath, request.config.getoption('testapp_path'))
       testdata = ts.descriptor
       request.config.cache.set(testfile, testdata)
       if actual_reports_dir := request.config.getoption('actual_reports_dir'):
