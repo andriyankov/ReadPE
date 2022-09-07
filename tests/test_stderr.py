@@ -1,14 +1,16 @@
 from os import path
 import pytest
 from readpe.utils import md5_of_file
+from readpe.testsample import get_basename
 
 
 @pytest.fixture
 def expected_stderr_md5(request):
   def _stderr(filename):
     reports_dir = request.config.getoption('test_reports_dir')
-    filepath = f'{filename.split(".")[0]}.stderr'
-    return md5_of_file(path.join(reports_dir, filepath))
+    reldir = path.dirname(filename)
+    reportname = get_basename(filename, 'stderr')
+    return md5_of_file(path.join(reports_dir, reldir, reportname))
   return _stderr
 
 

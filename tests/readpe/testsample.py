@@ -1,7 +1,6 @@
-
-import os
 import json
 import hashlib
+from os import path, makedirs
 
 from . import readpe
 from .utils import md5_of_file
@@ -19,9 +18,8 @@ class TestSampleException(Exception):
         return self.__err_text
 
 
-def _generate_filename(directory, filename, extension):
-    name = os.path.basename(filename).split(os.extsep)[0] + '.' + extension
-    return os.path.join(directory, name)
+def get_basename(filename, extension):
+    return f'{path.basename(filename).replace(".", "_")}.{extension}'
 
 
 def _md5_of_text(str):
@@ -68,12 +66,12 @@ class TestSample:
             raise TestSampleException(s)
 
     def __save_stdstream(self, directory, streamname):
-        if directory and os.path.exists(directory):
-            filename = _generate_filename(
-                directory, self.__descriptor['source-filename'], streamname)
-            content = self.__descriptor[f'{streamname}-content']
-            with open(filename, 'wb') as file_:
-                file_.write(content.encode())
+        if not path.exists(directory):
+            makedirs(directory, exist_ok=True)
+        filename = get_basename(self.__descriptor['source-filename'], streamname)
+        content = self.__descriptor[f'{streamname}-content']
+        with open(path.join(directory, filename), 'wb') as file_:
+            file_.write(content.encode())
 
     def __sort_stdout(self):
         try:

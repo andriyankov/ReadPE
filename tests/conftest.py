@@ -32,7 +32,7 @@ def readpe_testsample(request):
       testdata = ts.descriptor
       request.config.cache.set(testfile, testdata)
       if actual_reports_dir := request.config.getoption('actual_reports_dir'):
-        ts.save_to_dir(actual_reports_dir)
+        ts.save_to_dir(path.join(actual_reports_dir, path.dirname(testfile)))
     return testdata
   return _readpe_testsample
 
