@@ -34,12 +34,17 @@ MAX_STRINGS_COUNT = 15
 SUPPORTED_PYTHON_VERSION = {'min': '3.2.0', 'max': '3.10.4'}
 
 
+class ScriptError(Exception):
+    pass
+
+
 def check_supported_python_version():
     version = lambda major, minor, micro, *args: int(major)*100 + int(minor)*10 + int(micro)
     current = version(*sys.version_info)
     max = version(*SUPPORTED_PYTHON_VERSION['max'].split('.'))
     min = version(*SUPPORTED_PYTHON_VERSION['min'].split('.'))
-    return min <= current <= max
+    if not min <= current <= max:
+        raise ScriptError(f'Python version is not supported')
 
 
 class VersionInfo():
@@ -106,56 +111,58 @@ def get_revision_id():
         stdout_bin, _ = proc.communicate()
         return stdout_bin.decode('ascii')
     except BaseException as e:
-        print('get_revision_id() Error.\n%s' % e, file=sys.stderr)
-        return ''
+        raise ScriptError(f'Get GIT revision Error.\n{e}')
 
 
-def main():
-    if not check_supported_python_version():
-        print(f'Python version is not supported')
-        return 1
-
-    script_name = os.path.basename(sys.argv[0])
+def main(script_name):
+    check_supported_python_version()
 
     print('[%s]: Started...' % script_name)
-    try:
-        cmd_args = parse_cmdline()
-        src_file = cmd_args['source_file']
 
-        fileExt = os.path.splitext(src_file)[1]
-        if len(src_file) > 3 and fileExt not in ('.cpp', '.hpp'):
-            print('[%s]: Source file must be C++ header or source file' % script_name)
-            return 1
+    cmd_args = parse_cmdline()
+    src_file = cmd_args['source_file']
 
-        ver_info_file = cmd_args['version_info']
+    fileExt = os.path.splitext(src_file)[1]
+    if len(src_file) > 3 and fileExt not in ('.cpp', '.hpp'):
+        raise ScriptError(f'Source file must be C++ header or source file')
 
-        print('[%s]: Source file : %s' % (script_name, src_file))
-        print('[%s]: Version info : %s' % (script_name, ver_info_file))
+    ver_info_file = cmd_args['version_info']
 
-        if not check_for_update(ver_info_file):
-            print('[%s]: Not Updated. Has been updated lately' % script_name)
-            return 0
+    print('[%s]: Source file : %s' % (script_name, src_file))
+    print('[%s]: Version info : %s' % (script_name, ver_info_file))
 
-        version_info = VersionInfo(ver_info_file)
+    if not check_for_update(ver_info_file):
+        print('[%s]: Not Updated. Has been updated lately' % script_name)
+        return 0
 
-        new_version = '%d.%d.%d-r%s' % (
-                version_info.major_version,
-                version_info.minor_version,
-                version_info.patch_number,
-                get_revision_id())
+    version_info = VersionInfo(ver_info_file)
 
-        file_lines_count = change_version(src_file, new_version)
-        s = '[%s]: New version : %s\n' % (script_name, new_version) + \
-            '[%s]: Lines count : %d\n' % (script_name, file_lines_count) + \
-            '[%s]: Updated. Has just been updated' % script_name
-        print(s)
-    except BaseException as e:
-        print('[%s]: Not Updated. BaseException.args[0]: %s' % (script_name, e.args[0]))
-        print(traceback.format_exc(), file=sys.stderr)
-        return 1
+    new_version = '%d.%d.%d-r%s' % (
+            version_info.major_version,
+            version_info.minor_version,
+            version_info.patch_number,
+            get_revision_id())
+
+    file_lines_count = change_version(src_file, new_version)
+    s = '[%s]: New version : %s\n' % (script_name, new_version) + \
+        '[%s]: Lines count : %d\n' % (script_name, file_lines_count) + \
+        '[%s]: Updated. Has just been updated' % script_name
+    print(s)
+
     print('[%s]: Finished' % script_name)
     return 0
 
 
 if(__name__ == '__main__'):
-    sys.exit(main())
+    exit_code = 0
+    try:
+        script_name = os.path.basename(sys.argv[0])
+        exit_code = main(script_name)
+    except ScriptError as e:
+        print(f'[{script_name}]: Not Updated. {str(e)}', file=sys.stderr)
+        exit_code = 1
+    except BaseException as e:
+        print(f'[{script_name}]: Not Updated. {str(e)}', file=sys.stderr)
+        print(traceback.format_exc(), file=sys.stderr)
+        exit_code = 1
+    sys.exit(exit_code)
