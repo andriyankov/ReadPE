@@ -114,9 +114,7 @@ def change_version(filename, new_version):
 
 def check_for_update(filename):
     modify = datetime.fromtimestamp(os.path.getmtime(filename))
-    now = datetime.now()
-    diff = now - modify
-    return diff.seconds > MIN_SECONDS_FOR_UPDATE
+    return (datetime.now() - modify).seconds > MIN_SECONDS_FOR_UPDATE
 
 
 def get_revision_id():
@@ -158,22 +156,23 @@ def main():
         print('[%s]: Source file : %s' % (script_name, src_file))
         print('[%s]: Version info : %s' % (script_name, ver_info_file))
 
-        if check_for_update(ver_info_file):
-            version_info = VersionInfo(ver_info_file)
-
-            new_version = '%d.%d.%d-r%s' % (
-                    version_info.major_version,
-                    version_info.minor_version,
-                    version_info.patch_number,
-                    get_revision_id())
-
-            file_lines_count = change_version(src_file, new_version)
-            s = '[%s]: New version : %s\n' % (script_name, new_version) + \
-                '[%s]: Lines count : %d\n' % (script_name, file_lines_count) + \
-                '[%s]: Updated. Has just been updated' % script_name
-            print(s)
-        else:
+        if not check_for_update(ver_info_file):
             print('[%s]: Not Updated. Has been updated lately' % script_name)
+            return 0
+
+        version_info = VersionInfo(ver_info_file)
+
+        new_version = '%d.%d.%d-r%s' % (
+                version_info.major_version,
+                version_info.minor_version,
+                version_info.patch_number,
+                get_revision_id())
+
+        file_lines_count = change_version(src_file, new_version)
+        s = '[%s]: New version : %s\n' % (script_name, new_version) + \
+            '[%s]: Lines count : %d\n' % (script_name, file_lines_count) + \
+            '[%s]: Updated. Has just been updated' % script_name
+        print(s)
     except BaseException as e:
         print('[%s]: Not Updated. BaseException.args[0]: %s' % (script_name, e.args[0]))
         print(traceback.format_exc(), file=sys.stderr)
