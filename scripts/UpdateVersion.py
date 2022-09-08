@@ -29,6 +29,7 @@ from datetime import datetime
 
 min_python_version = '3.2.0'
 max_python_version = '3.10.4'
+GET_GIT_REVISION = 'git log -1 --pretty=format:%h'
 MAX_STRINGS_COUNT = 15
 MIN_SECONDS_FOR_UPDATE = 90
 
@@ -118,19 +119,13 @@ def check_for_update(filename):
 
 
 def get_revision_id():
-    result = ''
     try:
-        cmd_args = 'git log -1 --pretty=format:%h'
-        proc = Popen(cmd_args, stdout=PIPE, stderr=PIPE)
-        stdout_bin = proc.stdout.read()
-        proc.stdout.close()
-        proc.wait()
-        if stdout_bin:
-            result = stdout_bin.decode('ascii')
+        proc = Popen(GET_GIT_REVISION, stdout=PIPE, stderr=PIPE)
+        stdout_bin, _ = proc.communicate()
+        return stdout_bin.decode('ascii')
     except BaseException as e:
         print('get_revision_id() Error.\n%s' % e, file=sys.stderr)
-        result = ''
-    return result
+        return ''
 
 
 def main():
