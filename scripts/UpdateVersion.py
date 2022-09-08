@@ -27,37 +27,19 @@ from subprocess import Popen, PIPE
 from datetime import datetime
 
 
-min_python_version = '3.2.0'
-max_python_version = '3.10.4'
+
 GET_GIT_REVISION = 'git log -1 --pretty=format:%h'
-MAX_STRINGS_COUNT = 15
 MIN_SECONDS_FOR_UPDATE = 90
+MAX_STRINGS_COUNT = 15
+SUPPORTED_PYTHON_VERSION = {'min': '3.2.0', 'max': '3.10.4'}
 
 
-class SupportedPythonVersion:
-    def __init__(self):
-        self.__current_version = (sys.version_info[0] * 100) + \
-            (sys.version_info[1] * 10) + sys.version_info[2]
-
-    def __str_to_version(self, str):
-        t = str.split('.')
-        return (int(t[0]) * 100) + (int(t[1]) * 10) + int(t[2])
-
-    def check(self, str_minimal, str_maximal):
-        is_supported = False
-        try:
-            minimal = self.__str_to_version(str_minimal)
-            maximal = self.__str_to_version(str_maximal)
-            is_supported = minimal <= self.__current_version <= maximal
-        except BaseException as e:
-            print('SupportedPythonVersion.check() Error.\n%s' % e, file=sys.stderr)
-        if not is_supported:
-            self._str_minimal = str_minimal
-            self._str_maximal = str_maximal
-        return is_supported
-
-    def __str__(self):
-        return self._str_minimal + ' - ' + self._str_maximal
+def check_supported_python_version():
+    version = lambda major, minor, micro, *args: int(major)*100 + int(minor)*10 + int(micro)
+    current = version(*sys.version_info)
+    max = version(*SUPPORTED_PYTHON_VERSION['max'].split('.'))
+    min = version(*SUPPORTED_PYTHON_VERSION['min'].split('.'))
+    return min <= current <= max
 
 
 class VersionInfo():
@@ -129,9 +111,8 @@ def get_revision_id():
 
 
 def main():
-    supported_version = SupportedPythonVersion()
-    if not supported_version.check(min_python_version, max_python_version):
-        print('Python version not supported. Supported version between %s' % supported_version)
+    if not check_supported_python_version():
+        print(f'Python version is not supported')
         return 1
 
     script_name = os.path.basename(sys.argv[0])
