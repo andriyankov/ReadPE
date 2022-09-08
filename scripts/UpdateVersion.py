@@ -16,11 +16,6 @@
 #     "minor_version": 0,
 #     "patch_number": 1
 # }
-#
-# author   : Dmitry.Andriyankov
-# created  : 2011/Oct/14
-# modified : 2015/Oct/07
-#
 
 import re
 import argparse
@@ -32,36 +27,36 @@ from subprocess import Popen, PIPE
 from datetime import datetime
 
 
-minPythonVersion = '3.2.0'
-maxPythonVersion = '3.10.4'
+min_python_version = '3.2.0'
+max_python_version = '3.10.4'
 MAX_STRINGS_COUNT = 15
 MIN_SECONDS_FOR_UPDATE = 90
 
 
 class SupportedPythonVersion:
     def __init__(self):
-        self.__currentVersion = (sys.version_info[0] * 100) + \
+        self.__current_version = (sys.version_info[0] * 100) + \
             (sys.version_info[1] * 10) + sys.version_info[2]
 
     def __str_to_version(self, str):
         t = str.split('.')
         return (int(t[0]) * 100) + (int(t[1]) * 10) + int(t[2])
 
-    def check(self, strMinimal, strMaximal):
-        isSupported = False
+    def check(self, str_minimal, str_maximal):
+        is_supported = False
         try:
-            minimal = self.__str_to_version(strMinimal)
-            maximal = self.__str_to_version(strMaximal)
-            isSupported = minimal <= self.__currentVersion <= maximal
+            minimal = self.__str_to_version(str_minimal)
+            maximal = self.__str_to_version(str_maximal)
+            is_supported = minimal <= self.__current_version <= maximal
         except BaseException as e:
             print('SupportedPythonVersion.check() Error.\n%s' % e, file=sys.stderr)
-        if not isSupported:
-            self._strMinimal = strMinimal
-            self._strMaximal = strMaximal
-        return isSupported
+        if not is_supported:
+            self._str_minimal = str_minimal
+            self._str_maximal = str_maximal
+        return is_supported
 
     def __str__(self):
-        return self._strMinimal + ' - ' + self._strMaximal
+        return self._str_minimal + ' - ' + self._str_maximal
 
 
 class VersionInfo():
@@ -93,28 +88,28 @@ class VersionInfo():
 
 
 def parse_cmdline():
-    cmdLine = argparse.ArgumentParser(description='Update application version info')
-    cmdLine.add_argument('-s', '--source-file', help='Source file path', required=True, dest='source_file', metavar='FILEPATH')
-    cmdLine.add_argument('-v', '--version-info', help='Version info file path', required=True, dest='version_info', metavar='FILEPATH')
-    args = vars(cmdLine.parse_args())
+    parser = argparse.ArgumentParser(description='Update application version info')
+    parser.add_argument('-s', '--source-file', help='Source file path', required=True, dest='source_file', metavar='FILEPATH')
+    parser.add_argument('-v', '--version-info', help='Version info file path', required=True, dest='version_info', metavar='FILEPATH')
+    args = vars(parser.parse_args())
     return args
 
 
-def change_version(filename, newVersion):
-    versionRe = re.compile(r'(.*app.*ver.*")(.*)("+.*)', re.I)
+def change_version(filename, new_version):
+    version_re = re.compile(r'(.*app.*ver.*")(.*)("+.*)', re.I)
     with open(filename, 'rt') as f:
         lines = f.readlines()
-    linesCount = len(lines) if MAX_STRINGS_COUNT > len(lines) else MAX_STRINGS_COUNT
-    for i in range(linesCount):
+    lines_count = len(lines) if MAX_STRINGS_COUNT > len(lines) else MAX_STRINGS_COUNT
+    for i in range(lines_count):
         line = lines[i]
-        newLine = line
-        if versionRe.findall(line):
-            newLine = versionRe.sub(lambda match: match.group(1) + newVersion + match.group(3), line)
-            lines[i] = newLine
+        new_line = line
+        if version_re.findall(line):
+            new_line = version_re.sub(lambda match: match.group(1) + new_version + match.group(3), line)
+            lines[i] = new_line
             break
     with open(filename, 'wt') as f:
         f.writelines(lines)
-    return linesCount
+    return lines_count
 
 
 def check_for_update(filename):
@@ -127,65 +122,65 @@ def check_for_update(filename):
 def get_revision_id():
     result = ''
     try:
-        cmdArgs = 'git log -1 --pretty=format:%h'
-        proc = Popen(cmdArgs, stdout=PIPE, stderr=PIPE)
-        stdoutBin = proc.stdout.read()
+        cmd_args = 'git log -1 --pretty=format:%h'
+        proc = Popen(cmd_args, stdout=PIPE, stderr=PIPE)
+        stdout_bin = proc.stdout.read()
         proc.stdout.close()
         proc.wait()
-        if stdoutBin:
-            result = stdoutBin.decode('ascii')
+        if stdout_bin:
+            result = stdout_bin.decode('ascii')
     except BaseException as e:
         print('get_revision_id() Error.\n%s' % e, file=sys.stderr)
         result = ''
     return result
 
 
-def do_main():
-    supportedVersion = SupportedPythonVersion()
-    if not supportedVersion.check(minPythonVersion, maxPythonVersion):
-        print('Python version not supported. Supported version between %s' % supportedVersion)
+def main():
+    supported_version = SupportedPythonVersion()
+    if not supported_version.check(min_python_version, max_python_version):
+        print('Python version not supported. Supported version between %s' % supported_version)
         return 1
 
-    scriptName = os.path.basename(sys.argv[0])
+    script_name = os.path.basename(sys.argv[0])
 
-    print('[%s]: Started...' % scriptName)
+    print('[%s]: Started...' % script_name)
     try:
-        cmdArgs = parse_cmdline()
-        srcFile = cmdArgs['source_file']
+        cmd_args = parse_cmdline()
+        src_file = cmd_args['source_file']
 
-        fileExt = os.path.splitext(srcFile)[1]
-        if len(srcFile) > 3 and fileExt not in ('.cpp', '.hpp'):
-            print('[%s]: Source file must be C++ header or source file' % scriptName)
+        fileExt = os.path.splitext(src_file)[1]
+        if len(src_file) > 3 and fileExt not in ('.cpp', '.hpp'):
+            print('[%s]: Source file must be C++ header or source file' % script_name)
             return 1
 
-        verInfoFile = cmdArgs['version_info']
+        ver_info_file = cmd_args['version_info']
 
-        print('[%s]: Source file : %s' % (scriptName, srcFile))
-        print('[%s]: Version info : %s' % (scriptName, verInfoFile))
+        print('[%s]: Source file : %s' % (script_name, src_file))
+        print('[%s]: Version info : %s' % (script_name, ver_info_file))
 
-        if check_for_update(verInfoFile):
-            verInfo = VersionInfo(verInfoFile)
+        if check_for_update(ver_info_file):
+            version_info = VersionInfo(ver_info_file)
 
-            newVersion = '%d.%d.%d-r%s' % (
-                    verInfo.major_version,
-                    verInfo.minor_version,
-                    verInfo.patch_number,
+            new_version = '%d.%d.%d-r%s' % (
+                    version_info.major_version,
+                    version_info.minor_version,
+                    version_info.patch_number,
                     get_revision_id())
 
-            fileLinesCount = change_version(srcFile, newVersion)
-            s = '[%s]: New version : %s\n' % (scriptName, newVersion) + \
-                '[%s]: Lines count : %d\n' % (scriptName, fileLinesCount) + \
-                '[%s]: Updated. Has just been updated' % scriptName
+            file_lines_count = change_version(src_file, new_version)
+            s = '[%s]: New version : %s\n' % (script_name, new_version) + \
+                '[%s]: Lines count : %d\n' % (script_name, file_lines_count) + \
+                '[%s]: Updated. Has just been updated' % script_name
             print(s)
         else:
-            print('[%s]: Not Updated. Has been updated lately' % scriptName)
+            print('[%s]: Not Updated. Has been updated lately' % script_name)
     except BaseException as e:
-        print('[%s]: Not Updated. BaseException.args[0]: %s' % (scriptName, e.args[0]))
+        print('[%s]: Not Updated. BaseException.args[0]: %s' % (script_name, e.args[0]))
         print(traceback.format_exc(), file=sys.stderr)
         return 1
-    print('[%s]: Finished' % scriptName)
+    print('[%s]: Finished' % script_name)
     return 0
 
 
 if(__name__ == '__main__'):
-    sys.exit(do_main())
+    sys.exit(main())
