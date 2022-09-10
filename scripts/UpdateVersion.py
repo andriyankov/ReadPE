@@ -162,10 +162,10 @@ if(__name__ == '__main__'):
         script_name = os.path.basename(sys.argv[0])
         exit_code = main(script_name)
     except ScriptError as e:
-        print(f'[{script_name}]: Not Updated. {str(e)}', file=sys.stderr)
+        print(f'[{script_name}]: Error: {str(e)}', file=sys.stderr)
         exit_code = 1
     except BaseException as e:
-        print(f'[{script_name}]: Not Updated. {str(e)}', file=sys.stderr)
+        print(f'[{script_name}]: Error. {str(e)}', file=sys.stderr)
         print(traceback.format_exc(), file=sys.stderr)
         exit_code = 1
     sys.exit(exit_code)
