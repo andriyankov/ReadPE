@@ -123,7 +123,7 @@ def check_supported_source_files(filename):
 def main(script_name):
     check_supported_python_version()
 
-    print('[%s]: Started...' % script_name)
+    print(f'[{script_name}]: Started...')
 
     cmd_args = parse_cmdline()
     src_file = cmd_args['source_file']
@@ -131,11 +131,11 @@ def main(script_name):
 
     ver_info_file = cmd_args['version_info']
 
-    print('[%s]: Source file : %s' % (script_name, src_file))
-    print('[%s]: Version info : %s' % (script_name, ver_info_file))
+    print(f'[{script_name}]: Source file : {src_file}')
+    print(f'[{script_name}]: Version info : {ver_info_file}')
 
     if not check_for_update(ver_info_file):
-        print('[%s]: Not Updated. Has been updated lately' % script_name)
+        print(f'[{script_name}]: Not Updated. Has been updated lately')
         return 0
 
     version_info = VersionInfo(ver_info_file)
@@ -147,12 +147,12 @@ def main(script_name):
             get_revision_id())
 
     file_lines_count = change_version(src_file, new_version)
-    s = '[%s]: New version : %s\n' % (script_name, new_version) + \
-        '[%s]: Lines count : %d\n' % (script_name, file_lines_count) + \
-        '[%s]: Updated. Has just been updated' % script_name
+    s = f'[{script_name}]: New version :{new_version}\n' + \
+        f'[{script_name}]: Lines count : {file_lines_count}\n' + \
+        f'[{script_name}]: Updated. Has just been updated'
     print(s)
 
-    print('[%s]: Finished' % script_name)
+    print(f'[{script_name}]: Finished')
     return 0
 
 
