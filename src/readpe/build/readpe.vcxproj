@@ -145,7 +145,7 @@
       <AdditionalOptions>/PDBALTPATH:$(TargetName).pdb %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PreBuildEvent>
-      <Command>c:\python310\python.exe -u $(SolutionDir)\\..\\scripts\UpdateVersion.py --source-file $(ProjectDir)\..\\src\\cmdline.cpp --version-info $(ProjectDir)\..\\src\Version-Info.json</Command>
+      <Command>c:\python310\python.exe -u $(SolutionDir)\\..\\scripts\update_version.py --source-file $(ProjectDir)\..\\src\\cmdline.cpp --version-info $(ProjectDir)\..\\src\Version-Info.json</Command>
       <Message>Update the Application version info</Message>
     </PreBuildEvent>
     <PostBuildEvent>
@@ -176,7 +176,7 @@
       <AdditionalOptions>/PDBALTPATH:$(TargetName).pdb %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PreBuildEvent>
-      <Command>c:\python310\python.exe -u $(SolutionDir)\\..\\scripts\UpdateVersion.py --source-file $(ProjectDir)\..\\src\\cmdline.cpp --version-info $(ProjectDir)\..\\src\Version-Info.json</Command>
+      <Command>c:\python310\python.exe -u $(SolutionDir)\\..\\scripts\update_version.py --source-file $(ProjectDir)\..\\src\\cmdline.cpp --version-info $(ProjectDir)\..\\src\Version-Info.json</Command>
       <Message>Update the Application version info</Message>
     </PreBuildEvent>
     <PostBuildEvent>
