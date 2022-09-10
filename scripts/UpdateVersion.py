@@ -114,6 +114,12 @@ def get_revision_id():
         raise ScriptError(f'Get GIT revision Error.\n{e}')
 
 
+def check_supported_source_files(filename):
+    file_ext = os.path.splitext(filename)[1]
+    if len(filename) > 3 and file_ext not in ('.cpp', '.hpp'):
+        raise ScriptError(f'Source file must be C++ header or source file')
+
+
 def main(script_name):
     check_supported_python_version()
 
@@ -121,10 +127,7 @@ def main(script_name):
 
     cmd_args = parse_cmdline()
     src_file = cmd_args['source_file']
-
-    fileExt = os.path.splitext(src_file)[1]
-    if len(src_file) > 3 and fileExt not in ('.cpp', '.hpp'):
-        raise ScriptError(f'Source file must be C++ header or source file')
+    check_supported_source_files(src_file)
 
     ver_info_file = cmd_args['version_info']
 
