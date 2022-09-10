@@ -131,28 +131,23 @@ def main(script_name):
 
     ver_info_file = cmd_args['version_info']
 
-    print(f'[{script_name}]: Source file : {src_file}')
-    print(f'[{script_name}]: Version info : {ver_info_file}')
+    print(f'[{script_name}]: Source file  : {src_file}\n' + \
+        f'[{script_name}]: Version info : {ver_info_file}')
 
     if not check_for_update(ver_info_file):
         print(f'[{script_name}]: Not Updated. Has been updated lately')
         return 0
 
     version_info = VersionInfo(ver_info_file)
-
-    new_version = '%d.%d.%d-r%s' % (
-            version_info.major_version,
-            version_info.minor_version,
-            version_info.patch_number,
-            get_revision_id())
+    format_str = '{0.major_version}.{0.minor_version}.{0.patch_number}-r{1}'
+    new_version = format_str.format(version_info, get_revision_id())
 
     file_lines_count = change_version(src_file, new_version)
-    s = f'[{script_name}]: New version :{new_version}\n' + \
-        f'[{script_name}]: Lines count : {file_lines_count}\n' + \
-        f'[{script_name}]: Updated. Has just been updated'
-    print(s)
-
-    print(f'[{script_name}]: Finished')
+    print( f'[{script_name}]: New version  : {new_version}\n' + \
+        f'[{script_name}]: Lines count  : {file_lines_count}\n' + \
+        f'[{script_name}]: Updated. Has just been updated' + \
+        f'[{script_name}]: Finished'
+    )
     return 0
 
 
