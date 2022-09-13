@@ -6,6 +6,15 @@ const uint32_t  INVALID_RVA = std::numeric_limits<uint32_t>::max();
 const uint32_t  INVALID_RAW = std::numeric_limits<uint32_t>::max();
 const uint16_t  INVALID_SECTION_INDEX = std::numeric_limits<uint16_t>::max();
 
+enum BindingImportType
+{
+    None = 0,
+    New,
+    Old
+};
+
+
+BindingImportType detectBindingImportType(uint32_t timestamp);
 
 bool isPeOffsetCorrected(std::streampos offset);
 

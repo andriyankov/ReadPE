@@ -51,14 +51,13 @@ void extractModuleElements(
     std::vector<VirtualAddress_t> typicalIat;
     initializeIatTable(image, impDescr.FirstThunk, (uint32_t)bindingIat.size(), &typicalIat);
 
-    bool isBindingNew = (impDescr.TimeDateStamp == UINT32_MAX);
-    bool isBindingOld = (impDescr.TimeDateStamp > 0) && !isBindingNew;
-    bool doesBindingUsed = isBindingNew || isBindingOld;
+    bool doesBindingUsed = utils::detectBindingImportType(impDescr.TimeDateStamp) !=
+        utils::BindingImportType::None;
 
     VirtualAddress_t * importLookupTable = 0;
     if (!bindingIat.empty())
         importLookupTable = (VirtualAddress_t *)(&bindingIat[0]);
-    else if (!typicalIat.empty() && !doesBindingUsed)
+    else if (!typicalIat.empty() && doesBindingUsed)
         importLookupTable = (VirtualAddress_t *)(&typicalIat[0]);
     else
         return;
@@ -132,13 +131,8 @@ std::list<import::Module> ImportedModules(const Image<Arch>& image)
         std::streampos namePos = utils::RvaToRaw(image, import.Name);
         newModule.name = Io::StreamUtils::readStringAt(image.getStream(), namePos);
 
-        uint32_t ts = import.TimeDateStamp;
-
-        bool isBindingNew = (ts == UINT32_MAX);
-        bool isBindingOld = (ts > 0) && !isBindingNew;
-
-        if (isBindingOld)
-            newModule.timestampUTC0 = Time::unixtimeToString(ts);
+        if (utils::detectBindingImportType(import.TimeDateStamp) == utils::BindingImportType::Old)
+            newModule.timestampUTC0 = Time::unixtimeToString(import.TimeDateStamp);
 
         extractModuleElements(image, import, imageSize, &newModule.elements);
     }
