@@ -81,22 +81,22 @@ void extractModuleElements(
             forwarderIndex = (uint32_t)(typicalIat[elementIndex]);
         }
 
-        newElement.think.rva = elementRva;
-        newElement.think.offset = utils::RvaToRaw(image, elementRva);
+        newElement.thunk.rva = elementRva;
+        newElement.thunk.offset = utils::RvaToRaw(image, elementRva);
         elementRva += sizeof(VirtualAddress_t);
 
-        VirtualAddress_t thinkValue = importLookupTable[elementIndex];
+        VirtualAddress_t thunkValue = importLookupTable[elementIndex];
 
-        bool importedByName = (thinkValue & ordinalFlag) == 0;
+        bool importedByName = (thunkValue & ordinalFlag) == 0;
         if (importedByName) {
-            std::streampos thinkOffset = utils::RvaToRaw(image, static_cast<uint32_t>(thinkValue));
+            std::streampos thunkOffset = utils::RvaToRaw(image, static_cast<uint32_t>(thunkValue));
 
-            stream.seekg(thinkOffset);
+            stream.seekg(thunkOffset);
             stream.read((char*)(&newElement.hint), sizeof(newElement.hint));
             newElement.name = Io::StreamUtils::readString(stream);            
         }
         else
-            newElement.ordinal = static_cast<uint32_t>(thinkValue);
+            newElement.ordinal = static_cast<uint32_t>(thunkValue);
 
         // Detect static hook function
         if (doesBindingUsed && !typicalIat.empty()) {
