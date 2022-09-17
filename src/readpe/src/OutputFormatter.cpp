@@ -435,8 +435,8 @@ void formatImportModule(const parse::import::Module& module,
             jsonElement["isForwarded"] = json::String( "true" );
         }
 
-        jsonElement["rva"] = to_String(element.think.rva);
-        jsonElement["offset"] = to_String(element.think.offset);
+        jsonElement["rva"] = to_String(element.thunk.rva);
+        jsonElement["offset"] = to_String(element.thunk.offset);
 
         bool byOrdinal = (element.ordinal > 0);
         if (byOrdinal) {

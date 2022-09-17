@@ -41,6 +41,11 @@ class TestSample:
         self.__descriptor['source-md5'] = md5_of_file(filename)
         self.__clean_results()
 
+    def __eq__(self, other):
+        if isinstance(other, TestSample):
+            return self.descriptor == other.descriptor
+        return False
+
     def __clean_results(self):
         self.__descriptor['retcode'] = readpe.ExitCode.SUCCESS
         self.__descriptor['stdout-content'] = ''

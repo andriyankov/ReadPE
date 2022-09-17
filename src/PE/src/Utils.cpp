@@ -20,15 +20,27 @@ size_t getSectionNameSize(const char * ptr)
     return MAX_SECTION_NAME_SIZE - (rfound - end);
 }
 
-bool isPeOffsetCorrected(std::streampos offset)
-{
-    return (offset != Io::INVALID_OFFSET) && (offset > 0);
-}
-
 std::string getSectionName(const unsigned char* c_str)
 {
     auto sz = getSectionNameSize(reinterpret_cast<const char*>(c_str));
     return StringUtils::escape_sequence(c_str, sz);
+}
+
+BindingImportType detectBindingImportType(uint32_t timestamp)
+{
+    BindingImportType result = BindingImportType::None;
+
+    if (timestamp == UINT32_MAX)
+        result = BindingImportType::New;
+    else if (timestamp > 0)
+        result = BindingImportType::Old;
+
+    return result;
+}
+
+bool isPeOffsetCorrected(std::streampos offset)
+{
+    return (offset != Io::INVALID_OFFSET) && (offset > 0);
 }
 
 template<typename Arch>

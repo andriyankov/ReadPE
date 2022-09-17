@@ -16,7 +16,7 @@ struct Element final
     bool        isForwarded = false;
     uint16_t    hint = 0;
     uint32_t    ordinal = 0;
-    Address     think;
+    Address     thunk;
     Address     hook;
 };
 
