@@ -12,20 +12,17 @@ using namespace Fw;
 template<typename Arch>
 void initializeIatTable(
     const Image<Arch> & image,
-    uint32_t iatRva,
-    uint32_t thinksCount,
+    const ImgImportDescriptor & impDescr,
     typename std::vector<typename headers_traits<Arch>::VirtualAddress_type> * iatTable)
 {
     using VirtualAddress_t=headers_traits<Arch>::VirtualAddress_type;
 
+    uint32_t iatRva = impDescr.OriginalFirstThunk ? impDescr.OriginalFirstThunk : impDescr.FirstThunk;
     const auto& info = headers_utils::getImportedElementsInfo(image, iatRva);
     if (iatRva == 0 || info.pos == utils::INVALID_RAW)
         return;
 
-    size_t iatCount = thinksCount;
-    if (iatCount == 0)
-        iatCount = info.size / sizeof(VirtualAddress_t);
-
+    size_t iatCount = info.size / sizeof(VirtualAddress_t);
     if (iatCount > 0) {
         iatTable->resize(iatCount);
         image.getStream().seekg(info.pos);
@@ -45,22 +42,14 @@ void extractModuleElements(
 
     using VirtualAddress_t=headers_traits<Arch>::VirtualAddress_type;
 
-    std::vector<VirtualAddress_t> bindingIat;
-    initializeIatTable(image, impDescr.OriginalFirstThunk, 0, &bindingIat);
+    std::vector<VirtualAddress_t> importLookupTable;
+    initializeIatTable(image, impDescr, &importLookupTable);
 
-    std::vector<VirtualAddress_t> typicalIat;
-    initializeIatTable(image, impDescr.FirstThunk, (uint32_t)bindingIat.size(), &typicalIat);
+    if (importLookupTable.empty())
+        return;
 
     bool doesBindingUsed = utils::detectBindingImportType(impDescr.TimeDateStamp) !=
         utils::BindingImportType::None;
-
-    VirtualAddress_t * importLookupTable = 0;
-    if (!bindingIat.empty())
-        importLookupTable = (VirtualAddress_t *)(&bindingIat[0]);
-    else if (!typicalIat.empty() && doesBindingUsed)
-        importLookupTable = (VirtualAddress_t *)(&typicalIat[0]);
-    else
-        return;
 
     VirtualAddress_t imageBase = image.getNtHeaders().OptionalHeader.ImageBase;
     uint32_t elementRva = impDescr.FirstThunk;
@@ -72,13 +61,13 @@ void extractModuleElements(
 
     VirtualAddress_t ordinalFlag = ((VirtualAddress_t)1 << ( (8*sizeof(VirtualAddress_t) ) - 1));
 
-    size_t elementsCount = typicalIat.size();
+    size_t elementsCount = importLookupTable.size();
     for (size_t elementIndex = 0; elementIndex < elementsCount; ++elementIndex) {
         import::Element newElement;
 
         if (forwarderIndex != numForwarderEnd) {
             newElement.isForwarded = true;
-            forwarderIndex = (uint32_t)(typicalIat[elementIndex]);
+            forwarderIndex = (uint32_t)(importLookupTable[elementIndex]);
         }
 
         newElement.thunk.rva = elementRva;
@@ -99,8 +88,8 @@ void extractModuleElements(
             newElement.ordinal = static_cast<uint32_t>(thunkValue);
 
         // Detect static hook function
-        if (doesBindingUsed && !typicalIat.empty()) {
-            VirtualAddress_t addr = typicalIat[elementIndex];
+        if (doesBindingUsed && !importLookupTable.empty()) {
+            VirtualAddress_t addr = importLookupTable[elementIndex];
 
             bool isItHook = (addr >= imageBase) && (addr < (imageBase+imageSize));
             if (isItHook) {
