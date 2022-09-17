@@ -14,8 +14,8 @@ class ExitCode(Enum):
 
 def parse_commandline():
   parse = ArgumentParser('ReadPE utils')
-  parse.add_argument('--old-build-path', help='File path with new version of the readpe app', type=str, dest='new_build')
-  parse.add_argument('--new-build-path', help='File path with old version of the readpe app', type=str, dest='old_build')
+  parse.add_argument('--new-build-path', help='File path with new version of the readpe app', type=str, dest='new_build')
+  parse.add_argument('--old-build-path', help='File path with old version of the readpe app', type=str, dest='old_build')
   parse.add_argument('--files-dir', help='Directory path with test samples', type=str, dest='files_dir')
   parse.add_argument('--compare-builds', help='', action='store_true', dest='cmp_builds')
   return parse.parse_args()
