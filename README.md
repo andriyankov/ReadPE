@@ -170,6 +170,13 @@ Export
 ]
 ```
 
+Donate
+======
+```
+Yandex-Money:  410012415964253
+MIR Card:      2204 1201 0546 5948
+```
+
 Contact
 =======
 
