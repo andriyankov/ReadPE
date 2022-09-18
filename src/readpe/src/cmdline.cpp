@@ -160,10 +160,7 @@ void printWallets()
 
     stringstream stdoutMsg;
     stdoutMsg << "Yandex-Money:  " << "410012415964253" << '\n';
-    stdoutMsg << "QIWI:          " << "+79670338545" << '\n';
-    stdoutMsg << "WebMoney. WMR: " << "R121807550156" << '\n';
-    stdoutMsg << "WebMoney. WMZ: " << "Z320224780298" << '\n';
-    stdoutMsg << "Beeline:       " << "+79670338545" << '\n';
+    stdoutMsg << "MIR Card:      " << "2204 1201 0546 5948" << '\n';
     cout << stdoutMsg.rdbuf();
     cout.flush();
 }
