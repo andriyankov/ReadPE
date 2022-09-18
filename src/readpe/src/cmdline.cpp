@@ -154,7 +154,7 @@ void printVersionMessage()
     cout.flush();
 }
 
-void printElectronicPurses()
+void printWallets()
 {
     using namespace std;
 
@@ -330,7 +330,7 @@ const ProgramOptions parse(int argc, char * argv[])
             return emptyOptions;
         }
         else if(parseResult.count("donate")) {
-            printElectronicPurses();
+            printWallets();
             return emptyOptions;
         }
         else {
