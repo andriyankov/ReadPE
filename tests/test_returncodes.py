@@ -5,6 +5,7 @@ import pytest
   'filename, expected_returncode',
   [ ('pe/Correct32.bin', 0),
     ('pe/Correct64.bin', 0),
+    ('pe/cygintl-3.dll', 0),
     ('pe/ExportedForwardOne32.bin', 0),
     ('pe/ExportedByOrdinals32.bin', 0),
     ('pe/ExportedSomeForwards32.bin', 0),

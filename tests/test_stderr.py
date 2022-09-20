@@ -18,6 +18,7 @@ def expected_stderr_md5(request):
   'filename',
   [ ('pe/Correct32.bin'),
     ('pe/Correct64.bin'),
+    ('pe/cygintl-3.dll'),
     ('pe/ExportedForwardOne32.bin'),
     ('pe/ExportedByOrdinals32.bin'),
     ('pe/ExportedSomeForwards32.bin'),
