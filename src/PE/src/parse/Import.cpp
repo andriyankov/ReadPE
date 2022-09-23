@@ -101,6 +101,21 @@ void extractModuleElements(
     }
 }
 
+
+template<typename Arch>
+void extractModule(const Image<Arch>& image, const ImgImportDescriptor& import, uint32_t imageSize,
+    import::Module* result)
+{
+    std::streampos namePos = utils::RvaToRaw(image, import.Name);
+    result->name = Io::StreamUtils::readStringAt(image.getStream(), namePos);
+
+    if (utils::detectBindingImportType(import.TimeDateStamp) == utils::BindingImportType::Old)
+        result->timestampUTC0 = Time::unixtimeToString(import.TimeDateStamp);
+
+    extractModuleElements(image, import, imageSize, &result->elements);
+}
+
+
 template<typename Arch>
 std::list<import::Module> ImportedModules(const Image<Arch>& image)
 {
@@ -115,15 +130,7 @@ std::list<import::Module> ImportedModules(const Image<Arch>& image)
     for (const auto& import : image.getImportDirHeaders()) {
         result.emplace_back(import::Module());
 
-        auto& newModule = *(result.rbegin());
-
-        std::streampos namePos = utils::RvaToRaw(image, import.Name);
-        newModule.name = Io::StreamUtils::readStringAt(image.getStream(), namePos);
-
-        if (utils::detectBindingImportType(import.TimeDateStamp) == utils::BindingImportType::Old)
-            newModule.timestampUTC0 = Time::unixtimeToString(import.TimeDateStamp);
-
-        extractModuleElements(image, import, imageSize, &newModule.elements);
+        extractModule(image, import, imageSize, &(*result.rbegin()));
     }
     assert(image.getStream().good());
 
