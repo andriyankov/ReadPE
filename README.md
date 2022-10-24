@@ -175,6 +175,9 @@ Donate
 ```
 Yandex-Money:  410012415964253
 MIR Card:      2204 1201 0546 5948
+Ethereum (ETH) Address: 0x97194f6534e904A2416fC0b02894F1782c65B1c5
+Bitcoin (BTC) Address: bc1qc94slcwvde9uafcc64ktue6q840jrjtxgtsme4
+DAI (DAI) Address: 0x97194f6534e904A2416fC0b02894F1782c65B1c5
 ```
 
 Contact
