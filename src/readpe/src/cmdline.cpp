@@ -161,6 +161,9 @@ void printWallets()
     stringstream stdoutMsg;
     stdoutMsg << "Yandex-Money:  " << "410012415964253" << '\n';
     stdoutMsg << "MIR Card:      " << "2204 1201 0546 5948" << '\n';
+    stdoutMsg << "Ethereum(ETH): " << "0x97194f6534e904A2416fC0b02894F1782c65B1c5" << '\n';
+    stdoutMsg << "Bitcoin(BTC):  " << "bc1qc94slcwvde9uafcc64ktue6q840jrjtxgtsme4" << '\n';
+    stdoutMsg << "DAI(DAI):      " << "0x97194f6534e904A2416fC0b02894F1782c65B1c5" << '\n';
     cout << stdoutMsg.rdbuf();
     cout.flush();
 }
