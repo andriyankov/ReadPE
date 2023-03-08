@@ -20,8 +20,7 @@ def get_files_from_directory(directory, recursive=False):
 
 
 def get_executables(directory, recursive=False):
-    extensions = ('exe', 'dll', 'sys', 'ocx', 'scr', 'bpl', 'pyd', 'cpl', 'drv')
+    EXTENSIONS = {'.exe', '.dll', '.sys', '.ocx', '.scr', '.bpl', '.pyd', '.cpl', '.drv'}
     for fname in get_files_from_directory(directory, recursive):
-        extension = os.path.basename(fname).split(os.extsep)[-1]
-        if extension in extensions:
+        if os.path.splitext(fname)[1] in EXTENSIONS:
             yield(fname)
