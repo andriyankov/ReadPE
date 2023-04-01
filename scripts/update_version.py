@@ -31,7 +31,7 @@ from datetime import datetime
 GET_GIT_REVISION = 'git log -1 --pretty=format:%h'
 MIN_SECONDS_FOR_UPDATE = 90
 MAX_STRINGS_COUNT = 15
-SUPPORTED_PYTHON_VERSION = {'min': '3.2.0', 'max': '3.11.0'}
+SUPPORTED_PYTHON_VERSION = {'min': '3.2.0', 'max': '3.11.2'}
 
 
 class ScriptError(Exception):
